@@ -5,252 +5,254 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica de Español</title>
     <style>
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --dark: #2d3436;
-            --light: #f8f9ff;
-            --correct: #2ecc71;
-            --incorrect: #e74c3c;
-        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
+
         body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: var(--light);
             padding: 20px;
+            color: #333;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
         }
+
         .header {
             text-align: center;
+            color: white;
             margin-bottom: 30px;
         }
+
         .header h1 {
             font-size: 2em;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-        }
+
         .nav-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
             margin-bottom: 30px;
         }
+
         .nav-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
+            background: white;
+            border: none;
+            padding: 15px 10px;
+            border-radius: 12px;
+            font-size: 0.95em;
             font-weight: 600;
-            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .nav-btn:hover, .nav-btn.active {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: white;
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: white;
             border-radius: 16px;
             padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-height: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-height: 300px;
         }
+
         .section {
             display: none;
         }
+
         .section.active {
             display: block;
         }
-        h2 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
+
         .question {
-            font-size: 1.2em;
+            font-size: 1.3em;
             margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            font-weight: 600;
         }
+
+        .verb-info {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1em;
             margin-bottom: 15px;
+            transition: border-color 0.3s;
         }
+
         input[type="text"]:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: #667eea;
         }
+
+        .options {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            padding: 15px;
+            font-size: 1.05em;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .option-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
         .btn-primary {
-            background: var(--primary);
+            background: #667eea;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 15px 30px;
+            font-size: 1.1em;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             width: 100%;
-            margin: 10px 0;
+            margin-top: 10px;
             transition: background 0.3s;
         }
+
         .btn-primary:hover {
-            background: #5a6fc0;
+            background: #5568d3;
         }
+
         .feedback {
-            padding: 12px;
+            padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
-            text-align: center;
             font-weight: 600;
-            display: none;
+            text-align: center;
         }
+
         .feedback.correct {
-            background: rgba(46, 204, 113, 0.3);
-            color: var(--correct);
-            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
         }
+
         .feedback.incorrect {
-            background: rgba(231, 76, 60, 0.3);
-            color: var(--incorrect);
-            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
         }
+
         .score {
             text-align: center;
             margin-top: 20px;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1em;
+            color: #666;
         }
+
         .flashcard {
-            perspective: 1000px;
-            width: 100%;
-            height: 250px;
-            position: relative;
-            margin: 20px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
             cursor: pointer;
-        }
-        .flashcard-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
             transition: transform 0.6s;
             transform-style: preserve-3d;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            margin-bottom: 20px;
         }
-        .flashcard.flipped .flashcard-inner {
+
+        .flashcard.flipped {
             transform: rotateY(180deg);
         }
-        .flashcard-front, .flashcard-back {
+
+        .flashcard-content {
+            text-align: center;
+            padding: 30px;
+            backface-visibility: hidden;
+        }
+
+        .flashcard-front {
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .flashcard-back {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            text-align: center;
-            border-radius: 12px;
-        }
-        .flashcard-back {
             transform: rotateY(180deg);
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            backface-visibility: hidden;
+            white-space: pre-line;
+            font-size: 1.1em;
+            line-height: 1.5;
         }
-        .flashcard-word {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: white;
-        }
-        .flashcard-example {
+
+        .hint {
             font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.8);
+            color: #888;
+            font-style: italic;
             margin-top: 10px;
         }
-        .guide-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 3px solid var(--primary);
-        }
-        .guide-box h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        .guide-box p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
-        }
-        .btn-guide {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-        .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .option-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .option-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        .option-btn.selected {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
+
         .sentence {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9ff;
             border-radius: 8px;
-            margin: 15px 0;
-            border-left: 3px solid var(--primary);
+            border-left: 4px solid #667eea;
         }
-        @media (max-width: 600px) {
-            .nav-buttons {
-                grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5em;
             }
+            
             .card {
-                padding: 15px;
+                padding: 20px;
             }
         }
     </style>
@@ -261,6 +263,7 @@
             <h1>📚 Práctica de Español</h1>
             <p>Mejora tu español practicando cada día</p>
         </div>
+
         <div class="nav-buttons">
             <button class="nav-btn active" onclick="showSection('conjugaciones')">Conjugaciones</button>
             <button class="nav-btn" onclick="showSection('ser-estar')">Ser vs Estar</button>
@@ -270,66 +273,105 @@
             <button class="nav-btn" onclick="showSection('orden')">Orden de Palabras</button>
             <button class="nav-btn" onclick="showSection('flashcards')">Flashcards</button>
         </div>
+
         <div class="card">
-            <!-- Sección Conjugaciones -->
             <div id="conjugaciones" class="section active">
-                <h2>Practica Conjugaciones</h2>
-                <div class="question" id="conj-question">¿Cómo se conjuga "hacer" en presente para "nosotros"?</div>
+                <h2 style="margin-bottom: 20px; color: #667eea;">Practica Conjugaciones</h2>
+                <div class="question" id="conj-question"></div>
+                <div class="verb-info" id="verb-info"></div>
                 <input type="text" id="conj-answer" placeholder="Escribe la conjugación...">
                 <button class="btn-primary" onclick="checkConjugation()">Verificar</button>
-                <div class="feedback" id="conj-feedback"></div>
+                <div id="conj-feedback"></div>
                 <div class="score" id="conj-score">Correctas: 0 | Intentos: 0</div>
             </div>
 
-            <!-- Sección Ser vs. Estar -->
             <div id="ser-estar" class="section">
-                <h2>Ser vs. Estar</h2>
-                <button class="btn-guide" onclick="toggleGuide('ser-estar-guide')">📖 Ver Guía Rápida</button>
-                <div id="ser-estar-guide" class="guide-box">
-                    <h3>¿Cuándo usar cada uno?</h3>
-                    <p><strong>SER:</strong> Características permanentes (ej: "Soy alta"), identidad, profesión, hora/fecha, material.</p>
-                    <p><strong>ESTAR:</strong> Estados temporales (ej: "Estoy cansada"), ubicación, resultado de un cambio (ej: "La puerta está abierta").</p>
-                    <p><strong>¡Cuidado!</strong> "Estoy aburrida" ≠ "Soy aburrida" (la primera es temporal; la segunda, una característica negativa).</p>
+                <h2 style="margin-bottom: 20px; color: #667eea;">Ser vs Estar</h2>
+                <button class="btn-primary" onclick="toggleSerEstarGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <div id="ser-estar-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                    <p><strong>SER:</strong> características permanentes, identidad, profesión, origen, hora/fecha</p>
+                    <p style="margin-top:10px;"><strong>ESTAR:</strong> estados temporales, ubicación, progresivo, resultado de cambio</p>
+                    <p style="margin-top:10px;"><strong>⚠️ Cambian:</strong> ser listo (inteligente) vs estar listo (preparado)</p>
                 </div>
-                <div class="sentence" id="ser-estar-sentence">Mi hermana ___ muy inteligente (característica permanente).</div>
-                <div class="options">
-                    <button class="option-btn" onclick="selectOption('es', 'ser-estar')">es</button>
-                    <button class="option-btn" onclick="selectOption('está', 'ser-estar')">está</button>
-                </div>
+                <div class="sentence" id="ser-estar-sentence"></div>
+                <div class="options" id="ser-estar-options"></div>
                 <button class="btn-primary" onclick="checkSerEstar()">Verificar</button>
-                <div class="feedback" id="ser-estar-feedback"></div>
+                <div id="ser-estar-feedback"></div>
                 <div class="score" id="ser-estar-score">Correctas: 0 | Intentos: 0</div>
             </div>
 
-            <!-- Sección Completar Frases -->
             <div id="frases" class="section">
-                <h2>Completar Frases</h2>
-                <button class="btn-guide" onclick="toggleGuide('frases-guide')">📖 Ver Guía Rápida</button>
-                <div id="frases-guide" class="guide-box">
-                    <h3>Tips para completar frases:</h3>
-                    <p><strong>Imperfecto vs. Pretérito:</strong> Usa imperfecto para acciones habituales o en progreso; pretérito para acciones completadas.</p>
-                    <p><strong>"A" personal:</strong> Se usa antes de personas específicas (ej: "Vi a María").</p>
-                    <p><strong>Reflexivos:</strong> La acción recae en el sujeto (ej: "Me lavo las manos").</p>
+                <h2 style="margin-bottom: 20px; color: #667eea;">Completar Frases</h2>
+                <button class="btn-primary" onclick="toggleFrasesGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <div id="frases-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                    <p><strong>"A" Personal:</strong> antes de persona específica: "Veo a María"</p>
+                    <p style="margin-top:10px;"><strong>Reflexivos:</strong> acción sobre sí mismo: "Me lavo"</p>
+                    <p style="margin-top:10px;"><strong>Recíprocos:</strong> acción mutua: "Nos vemos"</p>
                 </div>
-                <div class="sentence" id="frases-sentence">Cuando era niño, yo ___ (jugar) en el parque todos los días.</div>
-                <input type="text" id="frases-answer" placeholder="Escribe el verbo conjugado...">
-                <button class="btn-primary" onclick="checkFrases()">Verificar</button>
-                <div class="feedback" id="frases-feedback"></div>
-                <div class="score" id="frases-score">Correctas: 0 | Intentos: 0</div>
+                <div class="sentence" id="sentence"></div>
+                <div class="options" id="options"></div>
+                <button class="btn-primary" onclick="checkSentence()">Verificar</button>
+                <div id="sentence-feedback"></div>
+                <div class="score" id="sentence-score">Correctas: 0 | Intentos: 0</div>
             </div>
 
-            <!-- Sección Preposiciones (CORREGIDA) -->
             <div id="preposiciones" class="section">
-                <h2>Preposiciones</h2>
-                <button class="btn-guide" onclick="toggleGuide('preposiciones-guide')">📖 Ver Guía Rápida</button>
-                <div id="preposiciones-guide" class="guide-box">
-                    <h3>Uso de preposiciones:</h3>
-                    <p><strong>POR:</strong> Causa, medio (ej: "Lo hice por ti"), o movimiento a través de un lugar (ej: "Voy <em>por</em> el parque"). <em>¡Ojo!</em> "Voy por la tienda" suena incompleto sin contexto (ej: "Voy por la tienda <strong>a comprar pan</strong>").</p>
-                    <p><strong>PARA:</strong> Destino o propósito claro (ej: "Voy <em>para</em> la tienda", "Estudio para el examen").</p>
-                    <p><strong>A:</strong> Movimiento hacia un lugar (ej: "Voy <em>a</em> la tienda").</p>
-                    <p><strong>EN:</strong> Ubicación estática (ej: "Estoy <em>en</em> casa").</p>
+                <h2 style="margin-bottom: 20px; color: #667eea;">Preposiciones</h2>
+                <button class="btn-primary" onclick="togglePrepositionGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <div id="prep-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                    <p><strong>POR:</strong> causa, medio, periodo</p>
+                    <p style="margin-top:10px;"><strong>PARA:</strong> destino, propósito, deadline</p>
+                    <p style="margin-top:10px;"><strong>A:</strong> movimiento | <strong>EN:</strong> ubicación</p>
                 </div>
-                <div class="sentence" id="preposiciones-sentence">___ la tienda (destino: adonde voy).</div>
-                <div class="options">
-                    <button class="option-btn" onclick="selectOption('Voy por', 'preposiciones')">Voy por</button>
-                    <button class="option-btn" onclick="selectOption('Voy para', 'preposiciones')">Voy para
+                <div class="sentence" id="prep-sentence"></div>
+                <div class="options" id="prep-options"></div>
+                <button class="btn-primary" onclick="checkPreposition()">Verificar</button>
+                <div id="prep-feedback"></div>
+                <div class="score" id="prep-score">Correctas: 0 | Intentos: 0</div>
+            </div>
+
+            <div id="objetos" class="section">
+                <h2 style="margin-bottom: 20px; color: #667eea;">Objeto Directo/Indirecto</h2>
+                <button class="btn-primary" onclick="toggleObjectGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <div id="object-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                    <p><strong>Directo (lo/la):</strong> Di el libro → Lo di</p>
+                    <p style="margin-top:10px;"><strong>Indirecto (le):</strong> Di a María → Le di</p>
+                    <p style="margin-top:10px;"><strong>Ambos:</strong> Di el libro a María → Se lo di</p>
+                </div>
+                <div class="question" id="object-question"></div>
+                <input type="text" id="object-answer" placeholder="Escribe la oración transformada...">
+                <div class="hint" id="object-hint"></div>
+                <button class="btn-primary" onclick="checkObject()">Verificar</button>
+                <div id="object-feedback"></div>
+                <div class="score" id="object-score">Correctas: 0 | Intentos: 0</div>
+            </div>
+
+            <div id="orden" class="section">
+                <h2 style="margin-bottom: 20px; color: #667eea;">Orden de Palabras</h2>
+                <div class="question">Ordena las palabras:</div>
+                <div id="word-bank" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; min-height: 60px; padding: 15px; background: #f8f9ff; border-radius: 8px; border: 2px dashed #667eea;"></div>
+                <div id="sentence-builder" style="display: flex; flex-wrap: wrap; gap: 10px; min-height: 60px; padding: 15px; background: white; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 20px;"></div>
+                <button class="btn-primary" onclick="checkOrden()" style="margin-bottom: 10px;">Verificar</button>
+                <button class="btn-primary" onclick="resetOrden()" style="background: #888;">Reiniciar</button>
+                <div id="orden-feedback"></div>
+                <div class="score" id="orden-score">Correctas: 0 | Intentos: 0</div>
+            </div>
+
+            <div id="flashcards" class="section">
+                <h2 style="margin-bottom: 20px; color: #667eea;">Flashcards de Vocabulario</h2>
+                <p style="margin-bottom: 15px; color: #666;">Haz clic en la tarjeta para ver la traducción</p>
+                <div class="flashcard" id="flashcard" onclick="flipCard()">
+                    <div class="flashcard-content flashcard-front" id="card-front"></div>
+                    <div class="flashcard-content flashcard-back" id="card-back"></div>
+                </div>
+                <button class="btn-primary" onclick="nextFlashcard()">Siguiente Tarjeta</button>
+                <div class="score" id="flashcard-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
