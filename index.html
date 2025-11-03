@@ -462,3 +462,381 @@ const serEstarExercises = [
     {text:'___ nerviosa por el examen.',options:['Soy','Estoy'],correct:1,explanation:'ESTAR: estado emocional temporal.'},
     {text:'Mi padre ___ policía.',options:['es','está'],correct:0,explanation:'SER: profesión.'}
 ];
+// DATOS - Completar Frases
+const sentences = [
+    {text:'Cuando mi abuela ___ niña, siempre ___ al parque.',options:['era/iba','fui/fui','era/fui','fui/iba'],correct:0,explanation:'Imperfecto para acciones habituales.'},
+    {text:'Anoche yo ___ una película cuando tú me ___.',options:['vi/llamaste','veía/llamabas','veía/llamaste','vi/llamabas'],correct:2,explanation:'Imperfecto para acción en progreso, pretérito para interrupción.'},
+    {text:'Ayer ___ al cine y ___ una película excelente.',options:['iba/veía','fui/vi','iba/vi','fui/veía'],correct:1,explanation:'Pretérito para acciones completadas.'},
+    {text:'Mientras ___ por el parque, ___ a un viejo amigo.',options:['caminaba/encontré','caminé/encontraba','caminaba/encontraba','caminé/encontré'],correct:0,explanation:'Imperfecto para contexto, pretérito para evento.'},
+    {text:'Cuando ___ joven, ___ mucho deporte.',options:['era/practicaba','fui/practiqué','era/practiqué','fui/practicaba'],correct:0,explanation:'Imperfecto para descripciones habituales.'},
+    {text:'Es importante que tú ___ la tarea.',options:['haces','hagas','hiciste','harás'],correct:1,explanation:'Es importante que + subjuntivo.'},
+    {text:'Ojalá que ___ buen tiempo mañana.',options:['hace','haga','hizo','hacía'],correct:1,explanation:'Ojalá + subjuntivo.'},
+    {text:'No creo que ella ___ la respuesta.',options:['sabe','sepa','supo','sabía'],correct:1,explanation:'No creo que + subjuntivo (duda).'},
+    {text:'Es evidente que tú ___ razón.',options:['tienes','tengas','tuviste','tendrás'],correct:0,explanation:'Es evidente + indicativo (certeza).'},
+    {text:'Me alegra que ___ aquí conmigo.',options:['estás','estés','estuviste','estarás'],correct:1,explanation:'Emoción + subjuntivo.'},
+    {text:'Ayer vi ___ tu hermana.',options:['a','—','de','para'],correct:0,explanation:'A personal con persona específica.'},
+    {text:'Busco ___ un buen mecánico.',options:['a','—','de','para'],correct:1,explanation:'No se usa con persona indefinida.'},
+    {text:'Conozco ___ María desde hace años.',options:['a','—','de','con'],correct:0,explanation:'Conocer + persona = a personal.'},
+    {text:'Necesito ___ alguien que me ayude.',options:['a','—','de','para'],correct:1,explanation:'Alguien indefinido en subjuntivo.'},
+    {text:'Invité ___ todos mis amigos.',options:['a','—','para','con'],correct:0,explanation:'A personal con grupo específico.'},
+    {text:'Tengo ___ tres gatos en casa.',options:['a','—','de','con'],correct:1,explanation:'No se usa con animales generalmente.'},
+    {text:'Llamé ___ mi madre esta mañana.',options:['a','—','para','con'],correct:0,explanation:'A personal con verbos de comunicación.'},
+    {text:'Vi ___ la película que recomendaste.',options:['a','—','de','para'],correct:1,explanation:'No se usa con objetos.'},
+    {text:'Todas las mañanas ___ el pelo.',options:['me lavo','lavo','me he lavado','lavaré'],correct:0,explanation:'Reflexivo: acción sobre sí mismo.'},
+    {text:'Ella ___ a su bebé.',options:['se baña','baña','se bañó','bañará'],correct:1,explanation:'No reflexivo: acción sobre otra persona.'},
+    {text:'Necesito ___ antes de la reunión.',options:['me preparar','prepararme','preparo','preparar'],correct:1,explanation:'Con infinitivo, pronombre después.'},
+    {text:'___ muy feliz con la noticia.',options:['Me siento','Siento','Me sentí','Sentiré'],correct:0,explanation:'Sentirse = estado emocional propio.'},
+    {text:'Mi abuela ___ a las 6 todos los días.',options:['levanta','se levanta','ha levantado','levantará'],correct:1,explanation:'Levantarse = reflexivo.'},
+    {text:'Por favor, ___ ese libro del estante.',options:['te levantas','levanta','levántate','se levanta'],correct:1,explanation:'No reflexivo: levantar objeto.'},
+    {text:'Cada noche ___ los dientes.',options:['lavo','me lavo','lavé','he lavado'],correct:1,explanation:'Reflexivo con partes del cuerpo.'},
+    {text:'Mi novio y yo ___ todos los días.',options:['vemos','nos vemos','se ven','veo'],correct:1,explanation:'Recíproco: acción mutua.'},
+    {text:'Ellos ___ en la universidad hace años.',options:['conocieron','se conocieron','conocen','nos conocimos'],correct:1,explanation:'Recíproco: se conocieron mutuamente.'},
+    {text:'Mis hermanas ___ mensajes todo el día.',options:['envían','se envían','envió','nos enviamos'],correct:1,explanation:'Recíproco: entre ellas.'},
+    {text:'Tú y yo ___ mañana en el café, ¿no?',options:['vemos','nos vemos','se ven','ve'],correct:1,explanation:'Recíproco entre tú y yo.'},
+    {text:'Los vecinos no ___ desde el incidente.',options:['hablan','se hablan','habló','nos hablamos'],correct:1,explanation:'Recíproco: no se comunican.'}
+];
+
+// DATOS - Preposiciones
+const prepositionExercises = [
+    {sentence:'Trabajo ___ conseguir dinero.',options:['por','para','a','en'],correct:1,explanation:'PARA expresa propósito.'},
+    {sentence:'Hablamos ___ teléfono toda la noche.',options:['por','para','a','con'],correct:0,explanation:'POR indica medio.'},
+    {sentence:'Voy ___ la escuela todos los días.',options:['en','a','para','de'],correct:1,explanation:'A indica movimiento.'},
+    {sentence:'Estoy ___ la biblioteca estudiando.',options:['a','en','por','para'],correct:1,explanation:'EN indica ubicación.'},
+    {sentence:'Soy ___ Colombia.',options:['desde','de','a','por'],correct:1,explanation:'DE indica origen.'},
+    {sentence:'Trabajo aquí ___ enero.',options:['de','desde','por','para'],correct:1,explanation:'DESDE marca inicio en tiempo.'},
+    {sentence:'Este regalo es ___ ti.',options:['por','para','a','de'],correct:1,explanation:'PARA indica destinatario.'},
+    {sentence:'Caminamos ___ el parque.',options:['por','para','en','a'],correct:0,explanation:'POR indica movimiento a través.'},
+    {sentence:'El libro está ___ la mesa.',options:['en','a','sobre','en o sobre'],correct:3,explanation:'EN y SOBRE para posición en superficie.'},
+    {sentence:'Salgo ___ Madrid mañana.',options:['a','para','en','por'],correct:1,explanation:'PARA indica destino con intención.'}
+];
+
+// DATOS - Objeto Directo/Indirecto
+const objectExercises = [
+    {original:'Di el libro a María',answer:'se lo di',hint:'se + lo',type:'both'},
+    {original:'Compré flores para mi madre',answer:'se las compré',hint:'se + las',type:'both'},
+    {original:'Enviamos el paquete a Juan',answer:'se lo enviamos',hint:'se + lo',type:'both'},
+    {original:'Veo la película',answer:'la veo',hint:'la',type:'direct'},
+    {original:'Compró los zapatos',answer:'los compró',hint:'los',type:'direct'},
+    {original:'Expliqué la situación a mis padres',answer:'se la expliqué',hint:'se + la',type:'both'},
+    {original:'Presté mi carro a Pedro',answer:'se lo presté',hint:'se + lo',type:'both'},
+    {original:'Leo el periódico',answer:'lo leo',hint:'lo',type:'direct'},
+    {original:'Dimos las gracias a la profesora',answer:'se las dimos',hint:'se + las',type:'both'},
+    {original:'Mostré las fotos a mi hermana',answer:'se las mostré',hint:'se + las',type:'both'}
+];
+
+// DATOS - Orden de Palabras
+const ordenExercises = [
+    {words:['zapatos','nuevos','compré','unos'],correct:'compré unos zapatos nuevos',variations:['compré unos nuevos zapatos']},
+    {words:['está','mi','en','hermana','la','escuela'],correct:'mi hermana está en la escuela',variations:[]},
+    {words:['gusta','mucho','me','el','chocolate'],correct:'me gusta mucho el chocolate',variations:['el chocolate me gusta mucho']},
+    {words:['a','voy','ir','cine','al','mañana'],correct:'voy a ir al cine mañana',variations:['mañana voy a ir al cine']},
+    {words:['casa','grande','una','tienen','muy'],correct:'tienen una casa muy grande',variations:[]},
+    {words:['libro','interesante','un','leyendo','estoy'],correct:'estoy leyendo un libro interesante',variations:[]},
+    {words:['temprano','levanto','me','siempre'],correct:'siempre me levanto temprano',variations:['me levanto temprano siempre']},
+    {words:['roja','la','camisa','prefiero'],correct:'prefiero la camisa roja',variations:[]},
+    {words:['no','español','habla','bien','él'],correct:'él no habla bien español',variations:['él no habla español bien']},
+    {words:['comida','preparó','deliciosa','una','mamá','mi'],correct:'mi mamá preparó una comida deliciosa',variations:[]}
+];
+
+// DATOS - Flashcards (primeras 50 de 100)
+const flashcards = [
+    {spanish:'el atolladero',english:'predicament, tight spot',example:'Se metió en un atolladero del que no puede salir.'},
+    {spanish:'la desventura',english:'misfortune',example:'Sufrió muchas desventuras durante su viaje.'},
+    {spanish:'el desenlace',english:'outcome, denouement',example:'El desenlace de la historia fue inesperado.'},
+    {spanish:'la estirpe',english:'lineage, descent',example:'Viene de una estirpe noble.'},
+    {spanish:'el desasosiego',english:'unease, restlessness',example:'Sentía un desasosiego constante.'},
+    {spanish:'la penumbra',english:'half-light, dimness',example:'Caminaba por la penumbra del pasillo.'},
+    {spanish:'el hastío',english:'weariness, tedium',example:'El hastío se apoderó de él.'},
+    {spanish:'deambular',english:'to wander aimlessly',example:'Deambulaba por las calles sin rumbo.'},
+    {spanish:'subsistir',english:'to subsist',example:'Apenas podía subsistir con ese salario.'},
+    {spanish:'desfallecer',english:'to faint, to weaken',example:'Desfallecía de hambre y sed.'},
+    {spanish:'acechar',english:'to lurk, to stalk',example:'El peligro acechaba en cada esquina.'},
+    {spanish:'desdeñar',english:'to disdain, to scorn',example:'Desdeñó la oferta sin pensarlo.'},
+    {spanish:'avivar',english:'to stoke, to revive',example:'Avivó el fuego con más leña.'},
+    {spanish:'insólito/a',english:'unusual, strange',example:'Fue un evento insólito.'},
+    {spanish:'pudiente',english:'wealthy, well-off',example:'Una familia pudiente de la ciudad.'},
+    {spanish:'intrépido/a',english:'intrepid, fearless',example:'Un explorador intrépido.'},
+    {spanish:'desolado/a',english:'desolate',example:'Un paisaje desolado.'},
+    {spanish:'azaroso/a',english:'risky, eventful',example:'Una vida azarosa y llena de aventuras.'},
+    {spanish:'atribulado/a',english:'distressed, troubled',example:'Se veía atribulado por las noticias.'},
+    {spanish:'la cordura',english:'sanity, good sense',example:'Perdió la cordura después del accidente.'},
+    {spanish:'la osadía',english:'audacity, boldness',example:'Tuvo la osadía de enfrentarlo.'},
+    {spanish:'el recelo',english:'suspicion, mistrust',example:'Lo miraba con recelo.'},
+    {spanish:'la zozobra',english:'anxiety, anguish',example:'Vivía en constante zozobra.'},
+    {spanish:'dar cuenta de',english:'to realize, to account for',example:'Me di cuenta de mi error demasiado tarde.'},
+    {spanish:'hacer caso omiso',english:'to ignore, to disregard',example:'Hizo caso omiso de las advertencias.'},
+    {spanish:'salir a flote',english:'to stay afloat, to get by',example:'Logró salir a flote después de la crisis.'},
+    {spanish:'perder los estribos',english:'to lose one\'s temper',example:'Perdió los estribos y gritó.'},
+    {spanish:'quedar en nada',english:'to come to nothing',example:'El proyecto quedó en nada.'},
+    {spanish:'la porfía',english:'stubbornness, persistence',example:'Su porfía lo ayudó a lograrlo.'},
+    {spanish:'menesteroso/a',english:'needy',example:'Ayudaba a los menesterosos del pueblo.'},
+    {spanish:'descargar',english:'to download',example:'Voy a descargar la aplicación.'},
+    {spanish:'subir (un archivo)',english:'to upload',example:'Subí las fotos a la nube.'},
+    {spanish:'la contraseña',english:'password',example:'Olvidé mi contraseña.'},
+    {spanish:'el archivo adjunto',english:'attachment',example:'Envié el documento como archivo adjunto.'},
+    {spanish:'el enlace',english:'link',example:'Haz clic en el enlace.'},
+    {spanish:'la pantalla',english:'screen',example:'La pantalla se congeló.'},
+    {spanish:'guardar',english:'to save',example:'No olvides guardar los cambios.'},
+    {spanish:'actualizar',english:'to update',example:'Necesito actualizar el sistema.'},
+    {spanish:'la aplicación (app)',english:'application, app',example:'Descargué una app nueva.'},
+    {spanish:'el buscador',english:'search engine',example:'Lo busqué en el buscador.'},
+    {spanish:'el usuario',english:'user',example:'Crea un nombre de usuario.'},
+    {spanish:'la red social',english:'social network',example:'No uso redes sociales.'},
+    {spanish:'compartir',english:'to share',example:'Compartí el artículo en mis redes.'},
+    {spanish:'el atasco / el taco',english:'traffic jam',example:'Hay un atasco tremendo.'},
+    {spanish:'el carril',english:'lane',example:'Cambia al carril derecho.'},
+    {spanish:'el semáforo',english:'traffic light',example:'Para en el semáforo.'},
+    {spanish:'la acera / la vereda',english:'sidewalk',example:'Caminaba por la acera.'},
+    {spanish:'el transeúnte',english:'passerby',example:'Un transeúnte le preguntó la hora.'},
+    {spanish:'la cola / la fila',english:'line, queue',example:'Hay mucha cola en el banco.'},
+    {spanish:'el letrero',english:'sign',example:'Lee el letrero antes de entrar.'}
+];
+
+// (continuación flashcards - otras 50)
+flashcards.push(
+    {spanish:'el timbre',english:'doorbell',example:'Toca el timbre.'},
+    {spanish:'la basura',english:'garbage, trash',example:'Saca la basura, por favor.'},
+    {spanish:'el contenedor',english:'container, bin',example:'Tira eso en el contenedor.'},
+    {spanish:'el plazo',english:'deadline',example:'El plazo es mañana.'},
+    {spanish:'la jornada',english:'workday, shift',example:'Trabajo media jornada.'},
+    {spanish:'el horario',english:'schedule',example:'Mi horario es flexible.'},
+    {spanish:'el sueldo',english:'salary',example:'Recibo mi sueldo a fin de mes.'},
+    {spanish:'el aumento',english:'raise',example:'Me dieron un aumento.'},
+    {spanish:'el despido',english:'dismissal, firing',example:'Teme el despido.'},
+    {spanish:'la baja',english:'leave (medical)',example:'Está de baja por enfermedad.'},
+    {spanish:'el expediente',english:'file, record',example:'Revisa su expediente laboral.'},
+    {spanish:'la capacitación',english:'training',example:'Asistí a una capacitación.'},
+    {spanish:'el teletrabajo',english:'remote work',example:'Prefiero el teletrabajo.'},
+    {spanish:'la cita',english:'appointment',example:'Tengo cita con el médico.'},
+    {spanish:'el consultorio',english:'doctor\'s office',example:'El consultorio está cerrado.'},
+    {spanish:'la receta',english:'prescription',example:'Necesito una receta médica.'},
+    {spanish:'el medicamento',english:'medication',example:'Toma este medicamento cada 8 horas.'},
+    {spanish:'el jarabe',english:'syrup',example:'Jarabe para la tos.'},
+    {spanish:'la vacuna',english:'vaccine',example:'Me puse la vacuna.'},
+    {spanish:'el análisis',english:'test, analysis',example:'Me hicieron un análisis de sangre.'},
+    {spanish:'la radiografía',english:'X-ray',example:'La radiografía salió bien.'},
+    {spanish:'el seguro',english:'insurance',example:'¿Tienes seguro médico?'},
+    {spanish:'el cajero automático',english:'ATM',example:'Retira dinero del cajero.'},
+    {spanish:'la cuenta',english:'bill, account',example:'Pide la cuenta, por favor.'},
+    {spanish:'la tarjeta',english:'card',example:'Pago con tarjeta.'},
+    {spanish:'el recibo',english:'receipt',example:'Guarda el recibo.'},
+    {spanish:'el descuento',english:'discount',example:'Hay un 20% de descuento.'},
+    {spanish:'la oferta',english:'sale, offer',example:'Está en oferta esta semana.'},
+    {spanish:'el precio',english:'price',example:'¿Cuál es el precio?'},
+    {spanish:'la garantía',english:'warranty',example:'Tiene un año de garantía.'},
+    {spanish:'el préstamo',english:'loan',example:'Pedí un préstamo al banco.'},
+    {spanish:'ahorrar',english:'to save (money)',example:'Estoy ahorrando para un viaje.'},
+    {spanish:'estar al tanto',english:'to be aware, informed',example:'Estoy al tanto de la situación.'},
+    {spanish:'tener en cuenta',english:'to take into account',example:'Ten en cuenta mi consejo.'},
+    {spanish:'ponerse de acuerdo',english:'to agree, reach agreement',example:'No nos pudimos poner de acuerdo.'},
+    {spanish:'echar de menos',english:'to miss (someone/something)',example:'Echo de menos mi país.'},
+    {spanish:'darse cuenta',english:'to realize',example:'Me di cuenta tarde.'},
+    {spanish:'hacer falta',english:'to be necessary, to miss',example:'Me hace falta descansar.'},
+    {spanish:'valer la pena',english:'to be worth it',example:'Vale la pena intentarlo.'},
+    {spanish:'estar harto/a',english:'to be fed up',example:'Estoy harta de esperar.'},
+    {spanish:'estar dispuesto/a',english:'to be willing',example:'Estoy dispuesta a ayudar.'},
+    {spanish:'llevarse bien/mal',english:'to get along well/badly',example:'Me llevo bien con mis vecinos.'},
+    {spanish:'ponerse al día',english:'to catch up',example:'Necesito ponerme al día con el trabajo.'},
+    {spanish:'hacer caso',english:'to pay attention, to listen',example:'Hazme caso, por favor.'},
+    {spanish:'pasar por alto',english:'to overlook',example:'Pasé por alto ese detalle.'},
+    {spanish:'sacar provecho',english:'to take advantage of',example:'Saca provecho de esta oportunidad.'},
+    {spanish:'quedar bien/mal',english:'to make a good/bad impression',example:'Quiero quedar bien en la entrevista.'},
+    {spanish:'el titular',english:'headline',example:'Los titulares de hoy son alarmantes.'},
+    {spanish:'la noticia',english:'news (item)',example:'¿Viste la noticia?'},
+    {spanish:'el reportaje',english:'report, feature',example:'Vi un reportaje interesante.'},
+    {spanish:'el estreno',english:'premiere, release',example:'Fui al estreno de la película.'}
+);
+
+// Estado del juego
+let currentVerb=null,currentSentence=null,currentFlashcard=0,currentPreposition=null,currentObject=null,currentOrden=null,currentSerEstar=null,selectedOption=null,selectedWords=[];
+let scores={conjugaciones:{correct:0,attempts:0},frases:{correct:0,attempts:0},preposiciones:{correct:0,attempts:0},objetos:{correct:0,attempts:0},orden:{correct:0,attempts:0},serEstar:{correct:0,attempts:0}};
+
+// FUNCIONES - Navegación
+function showSection(section){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(section).classList.add('active');
+    event.target.classList.add('active');
+    if(section==='conjugaciones')loadNewVerb();
+    if(section==='frases')loadNewSentence();
+    if(section==='flashcards')loadFlashcard();
+    if(section==='preposiciones')loadNewPreposition();
+    if(section==='objetos')loadNewObject();
+    if(section==='orden')loadNewOrden();
+    if(section==='ser-estar')loadNewSerEstar();
+}
+
+function updateScore(section){
+    const score=scores[section];
+    let elementId;
+    if(section==='conjugaciones')elementId='conj-score';
+    else if(section==='frases')elementId='sentence-score';
+    else if(section==='preposiciones')elementId='prep-score';
+    else if(section==='objetos')elementId='object-score';
+    else if(section==='orden')elementId='orden-score';
+    else if(section==='serEstar')elementId='ser-estar-score';
+    document.getElementById(elementId).textContent=`Correctas: ${score.correct} | Intentos: ${score.attempts}`;
+}
+
+// FUNCIONES - Conjugaciones
+function loadNewVerb(){
+    currentVerb=irregularVerbs[Math.floor(Math.random()*irregularVerbs.length)];
+    document.getElementById('conj-question').textContent=`¿Cómo se conjuga "${currentVerb.infinitive}" en ${currentVerb.tense}?`;
+    document.getElementById('verb-info').textContent=`Persona: ${currentVerb.person}`;
+    document.getElementById('conj-answer').value='';
+    document.getElementById('conj-feedback').innerHTML='';
+}
+
+function checkConjugation(){
+    const answer=document.getElementById('conj-answer').value.trim().toLowerCase();
+    const feedback=document.getElementById('conj-feedback');
+    scores.conjugaciones.attempts++;
+    if(answer===currentVerb.answer.toLowerCase()){
+        scores.conjugaciones.correct++;
+        feedback.className='feedback correct';
+        feedback.textContent='¡Correcto! 🎉';
+        setTimeout(()=>{loadNewVerb();},1500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentVerb.answer}</strong>`;
+    }
+    updateScore('conjugaciones');
+}
+
+// FUNCIONES - Ser vs Estar
+function toggleSerEstarGuide(){
+    const guide=document.getElementById('ser-estar-guide');
+    guide.style.display=guide.style.display==='none'?'block':'none';
+}
+
+function loadNewSerEstar(){
+    currentSerEstar=serEstarExercises[Math.floor(Math.random()*serEstarExercises.length)];
+    document.getElementById('ser-estar-sentence').textContent=currentSerEstar.text;
+    const optionsDiv=document.getElementById('ser-estar-options');
+    optionsDiv.innerHTML='';
+    selectedOption=null;
+    currentSerEstar.options.forEach((option,index)=>{
+        const btn=document.createElement('button');
+        btn.className='option-btn';
+        btn.textContent=option;
+        btn.onclick=()=>selectSerEstarOption(index);
+        optionsDiv.appendChild(btn);
+    });
+    document.getElementById('ser-estar-feedback').innerHTML='';
+}
+
+function selectSerEstarOption(index){
+    selectedOption=index;
+    document.querySelectorAll('#ser-estar-options .option-btn').forEach((btn,i)=>{
+        btn.classList.toggle('selected',i===index);
+    });
+}
+
+function checkSerEstar(){
+    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
+    const feedback=document.getElementById('ser-estar-feedback');
+    scores.serEstar.attempts++;
+    if(selectedOption===currentSerEstar.correct){
+        scores.serEstar.correct++;
+        feedback.className='feedback correct';
+        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
+        setTimeout(()=>{loadNewSerEstar();},2500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSerEstar.options[currentSerEstar.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
+    }
+    updateScore('serEstar');
+}
+
+// FUNCIONES - Completar Frases
+function toggleFrasesGuide(){
+    const guide=document.getElementById('frases-guide');
+    guide.style.display=guide.style.display==='none'?'block':'none';
+}
+
+function loadNewSentence(){
+    currentSentence=sentences[Math.floor(Math.random()*sentences.length)];
+    document.getElementById('sentence').textContent=currentSentence.text;
+    const optionsDiv=document.getElementById('options');
+    optionsDiv.innerHTML='';
+    selectedOption=null;
+    currentSentence.options.forEach((option,index)=>{
+        const btn=document.createElement('button');
+        btn.className='option-btn';
+        btn.textContent=option;
+        btn.onclick=()=>selectOption(index);
+        optionsDiv.appendChild(btn);
+    });
+    document.getElementById('sentence-feedback').innerHTML='';
+}
+
+function selectOption(index){
+    selectedOption=index;
+    document.querySelectorAll('#options .option-btn').forEach((btn,i)=>{
+        btn.classList.toggle('selected',i===index);
+    });
+}
+
+function checkSentence(){
+    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
+    const feedback=document.getElementById('sentence-feedback');
+    scores.frases.attempts++;
+    if(selectedOption===currentSentence.correct){
+        scores.frases.correct++;
+        feedback.className='feedback correct';
+        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
+        setTimeout(()=>{loadNewSentence();},2500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSentence.options[currentSentence.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
+    }
+    updateScore('frases');
+}
+
+// FUNCIONES - Preposiciones
+function togglePrepositionGuide(){
+    const guide=document.getElementById('prep-guide');
+    guide.style.display=guide.style.display==='none'?'block':'none';
+}
+
+function loadNewPreposition(){
+    currentPreposition=prepositionExercises[Math.floor(Math.random()*prepositionExercises.length)];
+    document.getElementById('prep-sentence').textContent=currentPreposition.sentence;
+    const optionsDiv=document.getElementById('prep-options');
+    optionsDiv.innerHTML='';
+    selectedOption=null;
+    currentPreposition.options.forEach((option,index)=>{
+        const btn=document.createElement('button');
+        btn.className='option-btn';
+        btn.textContent=option;
+        btn.onclick=()=>selectPrepOption(index);
+        optionsDiv.appendChild(btn);
+    });
+    document.getElementById('prep-feedback').innerHTML='';
+}
+
+function selectPrepOption(index){
+    selectedOption=index;
+    document.querySelectorAll('#prep-options .option-btn').forEach((btn,i)=>{
+        btn.classList.toggle('selected',i===index);
+    });
+}
+
+function checkPreposition(){
+    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
+    const feedback=document.getElementById('prep-feedback');
+    scores.preposiciones.attempts++;
+    if(selectedOption===currentPreposition.correct){
+        scores.preposiciones.correct++;
+        feedback.className='feedback correct';
+        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
+        setTimeout(()=>{loadNewPreposition();},2500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentPreposition.options[currentPreposition.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
+    }
+    updateScore('preposiciones');
+}
+
+// FUNCIONES - Objeto Directo/Indirecto
+function
