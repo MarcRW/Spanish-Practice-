@@ -840,3 +840,139 @@ function checkPreposition(){
 
 // FUNCIONES - Objeto Directo/Indirecto
 function
+    function toggleObjectGuide(){
+    const guide=document.getElementById('object-guide');
+    guide.style.display=guide.style.display==='none'?'block':'none';
+}
+
+function loadNewObject(){
+    currentObject=objectExercises[Math.floor(Math.random()*objectExercises.length)];
+    document.getElementById('object-question').textContent=`Transforma la oración: "${currentObject.original}"`;
+    document.getElementById('object-hint').textContent=`Pista: ${currentObject.hint}`;
+    document.getElementById('object-answer').value='';
+    document.getElementById('object-feedback').innerHTML='';
+}
+
+function checkObject(){
+    const answer=document.getElementById('object-answer').value.trim().toLowerCase();
+    const feedback=document.getElementById('object-feedback');
+    scores.objetos.attempts++;
+    if(answer===currentObject.answer.toLowerCase()){
+        scores.objetos.correct++;
+        feedback.className='feedback correct';
+        feedback.textContent='¡Correcto! 🎉';
+        setTimeout(()=>{loadNewObject();},1500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentObject.answer}</strong>`;
+    }
+    updateScore('objetos');
+}
+
+// FUNCIONES - Orden de Palabras
+function loadNewOrden(){
+    currentOrden=ordenExercises[Math.floor(Math.random()*ordenExercises.length)];
+    selectedWords=[];
+    const wordBank=document.getElementById('word-bank');
+    wordBank.innerHTML='';
+    const shuffled=[...currentOrden.words].sort(()=>Math.random()-0.5);
+    shuffled.forEach((word,index)=>{
+        const wordBtn=document.createElement('button');
+        wordBtn.className='option-btn';
+        wordBtn.textContent=word;
+        wordBtn.onclick=()=>addWord(word,index);
+        wordBtn.dataset.index=index;
+        wordBank.appendChild(wordBtn);
+    });
+    document.getElementById('sentence-builder').innerHTML='';
+    document.getElementById('orden-feedback').innerHTML='';
+}
+
+function addWord(word,index){
+    selectedWords.push({word,originalIndex:index});
+    const wordBank=document.getElementById('word-bank');
+    const buttons=wordBank.querySelectorAll('.option-btn');
+    buttons[index].style.display='none';
+    const builder=document.getElementById('sentence-builder');
+    const wordSpan=document.createElement('span');
+    wordSpan.className='option-btn selected';
+    wordSpan.textContent=word;
+    wordSpan.style.cursor='pointer';
+    wordSpan.onclick=()=>removeWord(selectedWords.length-1);
+    builder.appendChild(wordSpan);
+}
+
+function removeWord(position){
+    const removed=selectedWords.splice(position);
+    removed.forEach(item=>{
+        const wordBank=document.getElementById('word-bank');
+        const buttons=wordBank.querySelectorAll('.option-btn');
+        buttons[item.originalIndex].style.display='inline-block';
+    });
+    const builder=document.getElementById('sentence-builder');
+    const spans=builder.querySelectorAll('span');
+    for(let i=position;i<spans.length;i++){
+        spans[i].remove();
+    }
+}
+
+function resetOrden(){
+    loadNewOrden();
+}
+
+function checkOrden(){
+    if(selectedWords.length===0){alert('Por favor ordena las palabras');return;}
+    const userAnswer=selectedWords.map(w=>w.word).join(' ').toLowerCase();
+    const feedback=document.getElementById('orden-feedback');
+    scores.orden.attempts++;
+    const isCorrect=userAnswer===currentOrden.correct.toLowerCase()||currentOrden.variations.some(v=>userAnswer===v.toLowerCase());
+    if(isCorrect){
+        scores.orden.correct++;
+        feedback.className='feedback correct';
+        feedback.textContent='¡Correcto! 🎉';
+        setTimeout(()=>{loadNewOrden();},1500);
+    }else{
+        feedback.className='feedback incorrect';
+        feedback.innerHTML=`Incorrecto. Una respuesta correcta es: <strong>${currentOrden.correct}</strong>`;
+    }
+    updateScore('orden');
+}
+
+// FUNCIONES - Flashcards
+function loadFlashcard(){
+    const card=flashcards[currentFlashcard];
+    const frontText=card.spanish;
+    const backText=card.example?`${card.english}\n\nEjemplo:\n${card.example}`:card.english;
+    document.getElementById('card-front').textContent=frontText;
+    document.getElementById('card-back').textContent=backText;
+    document.getElementById('flashcard').classList.remove('flipped');
+    updateFlashcardProgress();
+}
+
+function flipCard(){
+    document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextFlashcard(){
+    currentFlashcard=(currentFlashcard+1)%flashcards.length;
+    loadFlashcard();
+}
+
+function updateFlashcardProgress(){
+    document.getElementById('flashcard-progress').textContent=`Tarjeta ${currentFlashcard+1} de ${flashcards.length}`;
+}
+
+// Inicializar
+loadNewVerb();
+
+// Event listeners para Enter
+document.getElementById('conj-answer').addEventListener('keypress',function(e){
+    if(e.key==='Enter')checkConjugation();
+});
+
+document.getElementById('object-answer').addEventListener('keypress',function(e){
+    if(e.key==='Enter')checkObject();
+});
+    </script>
+</body>
+</html>
