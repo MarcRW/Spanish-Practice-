@@ -245,6 +245,14 @@
             border-radius: 8px;
             border-left: 4px solid #667eea;
         }
+/* Low-energy flip: no 3D, just swap faces */
+.flashcard { transform: none !important; }              /* kill rotation */
+.flashcard-content { backface-visibility: visible; 
+                     transform: none !important; }
+
+.flashcard-back { display: none; }                      /* show front by default */
+.flashcard.flipped .flashcard-front { display: none; }  /* hide front when flipped */
+.flashcard.flipped .flashcard-back { display: flex; }   /* show back when flipped */
 
         @media (max-width: 480px) {
             .header h1 {
