@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -11,259 +12,292 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: #333;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
+    .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+    }
 
+    .header h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .nav-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .nav-btn {
+        background: white;
+        border: none;
+        padding: 15px 10px;
+        border-radius: 12px;
+        font-size: 0.95em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .nav-btn.active {
+        background: #667eea;
+        color: white;
+    }
+
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        min-height: 300px;
+    }
+
+    .section {
+        display: none;
+    }
+
+    .section.active {
+        display: block;
+    }
+
+    .question {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        color: #667eea;
+        font-weight: 600;
+    }
+
+    .verb-info {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: #666;
+    }
+
+    .input-container {
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1em;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .accent-keyboard {
+        display: none;
+        background: #f8f9ff;
+        border: 2px solid #667eea;
+        border-radius: 8px;
+        padding: 10px;
+        margin-top: 8px;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .accent-keyboard.active {
+        display: flex;
+    }
+
+    .accent-btn {
+        background: white;
+        border: 2px solid #667eea;
+        padding: 10px 15px;
+        font-size: 1.2em;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        min-width: 45px;
+        font-weight: 600;
+    }
+
+    .accent-btn:hover {
+        background: #667eea;
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .accent-btn:active {
+        transform: scale(0.95);
+    }
+
+    .options {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .option-btn {
+        padding: 15px;
+        font-size: 1.05em;
+        border: 2px solid #e0e0e0;
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: left;
+    }
+
+    .option-btn:hover {
+        border-color: #667eea;
+        background: #f8f9ff;
+    }
+
+    .option-btn.selected {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+    }
+
+    .btn-primary {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #5568d3;
+    }
+
+    .feedback {
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .feedback.correct {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+    }
+
+    .feedback.incorrect {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+    }
+
+    .score {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.1em;
+        color: #666;
+    }
+
+    .flashcard {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .flashcard-content {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .flashcard-front {
+        font-size: 2em;
+        font-weight: 600;
+    }
+
+    .flashcard-back {
+        display: none;
+        white-space: pre-line;
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+
+    .flashcard.flipped .flashcard-front {
+        display: none;
+    }
+
+    .flashcard.flipped .flashcard-back {
+        display: block;
+    }
+
+    .hint {
+        font-size: 0.9em;
+        color: #888;
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    .sentence {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        padding: 20px;
+        background: #f8f9ff;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+    }
+
+    @media (max-width: 480px) {
         .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 1.5em;
         }
-
-        .nav-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .nav-btn {
-            background: white;
-            border: none;
-            padding: 15px 10px;
-            border-radius: 12px;
-            font-size: 0.95em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .nav-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
+        
         .card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            min-height: 300px;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .question {
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .verb-info {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            color: #666;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1em;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .options {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .option-btn {
-            padding: 15px;
-            font-size: 1.05em;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: left;
-        }
-
-        .option-btn:hover {
-            border-color: #667eea;
-            background: #f8f9ff;
-        }
-
-        .option-btn.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: #5568d3;
-        }
-
-        .feedback {
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .feedback.correct {
-            background: #d4edda;
-            color: #155724;
-            border: 2px solid #c3e6cb;
-        }
-
-        .feedback.incorrect {
-            background: #f8d7da;
-            color: #721c24;
-            border: 2px solid #f5c6cb;
-        }
-
-        .score {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #666;
-        }
-
-        .flashcard {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-content {
-            text-align: center;
-            padding: 30px;
-            backface-visibility: hidden;
-        }
-
-        .flashcard-front {
-            font-size: 2em;
-            font-weight: 600;
-        }
-
-        .flashcard-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-            white-space: pre-line;
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-
-        .hint {
-            font-size: 0.9em;
-            color: #888;
-            font-style: italic;
-            margin-top: 10px;
-        }
-
-        .sentence {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
             padding: 20px;
-            background: #f8f9ff;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
         }
-/* Low-energy flip: no 3D, just swap faces */
-.flashcard { transform: none !important; }              /* kill rotation */
-.flashcard-content { backface-visibility: visible; 
-                     transform: none !important; }
 
-.flashcard-back { display: none; }                      /* show front by default */
-.flashcard.flipped .flashcard-front { display: none; }  /* hide front when flipped */
-.flashcard.flipped .flashcard-back { display: flex; }   /* show back when flipped */
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.5em;
-            }
-            
-            .card {
-                padding: 20px;
-            }
+        .accent-btn {
+            min-width: 40px;
+            padding: 8px 12px;
         }
-    </style>
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="container">
@@ -272,388 +306,450 @@
             <p>Mejora tu español practicando cada día</p>
         </div>
 
-        <div class="nav-buttons">
-            <button class="nav-btn active" onclick="showSection('conjugaciones')">Conjugaciones</button>
-            <button class="nav-btn" onclick="showSection('ser-estar')">Ser vs Estar</button>
-            <button class="nav-btn" onclick="showSection('frases')">Completar Frases</button>
-            <button class="nav-btn" onclick="showSection('preposiciones')">Preposiciones</button>
-            <button class="nav-btn" onclick="showSection('objetos')">Obj. Directo/Indirecto</button>
-            <button class="nav-btn" onclick="showSection('orden')">Orden de Palabras</button>
-            <button class="nav-btn" onclick="showSection('flashcards')">Flashcards</button>
-        </div>
-
-        <div class="card">
-            <div id="conjugaciones" class="section active">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Practica Conjugaciones</h2>
-                <div class="question" id="conj-question"></div>
-                <div class="verb-info" id="verb-info"></div>
-                <input type="text" id="conj-answer" placeholder="Escribe la conjugación...">
-                <button class="btn-primary" onclick="checkConjugation()">Verificar</button>
-                <div id="conj-feedback"></div>
-                <div class="score" id="conj-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="ser-estar" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Ser vs Estar</h2>
-                <button class="btn-primary" onclick="toggleSerEstarGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
-                <div id="ser-estar-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
-                    <p><strong>SER:</strong> características permanentes, identidad, profesión, origen, hora/fecha</p>
-                    <p style="margin-top:10px;"><strong>ESTAR:</strong> estados temporales, ubicación, progresivo, resultado de cambio</p>
-                    <p style="margin-top:10px;"><strong>⚠️ Cambian:</strong> ser listo (inteligente) vs estar listo (preparado)</p>
-                </div>
-                <div class="sentence" id="ser-estar-sentence"></div>
-                <div class="options" id="ser-estar-options"></div>
-                <button class="btn-primary" onclick="checkSerEstar()">Verificar</button>
-                <div id="ser-estar-feedback"></div>
-                <div class="score" id="ser-estar-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="frases" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Completar Frases</h2>
-                <button class="btn-primary" onclick="toggleFrasesGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
-                <div id="frases-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
-                    <p><strong>"A" Personal:</strong> antes de persona específica: "Veo a María"</p>
-                    <p style="margin-top:10px;"><strong>Reflexivos:</strong> acción sobre sí mismo: "Me lavo"</p>
-                    <p style="margin-top:10px;"><strong>Recíprocos:</strong> acción mutua: "Nos vemos"</p>
-                </div>
-                <div class="sentence" id="sentence"></div>
-                <div class="options" id="options"></div>
-                <button class="btn-primary" onclick="checkSentence()">Verificar</button>
-                <div id="sentence-feedback"></div>
-                <div class="score" id="sentence-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="preposiciones" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Preposiciones</h2>
-                <button class="btn-primary" onclick="togglePrepositionGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
-                <div id="prep-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
-                    <p><strong>POR:</strong> causa, medio, periodo</p>
-                    <p style="margin-top:10px;"><strong>PARA:</strong> destino, propósito, deadline</p>
-                    <p style="margin-top:10px;"><strong>A:</strong> movimiento | <strong>EN:</strong> ubicación</p>
-                </div>
-                <div class="sentence" id="prep-sentence"></div>
-                <div class="options" id="prep-options"></div>
-                <button class="btn-primary" onclick="checkPreposition()">Verificar</button>
-                <div id="prep-feedback"></div>
-                <div class="score" id="prep-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="objetos" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Objeto Directo/Indirecto</h2>
-                <button class="btn-primary" onclick="toggleObjectGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
-                <div id="object-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
-                    <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
-                    <p><strong>Directo (lo/la):</strong> Di el libro → Lo di</p>
-                    <p style="margin-top:10px;"><strong>Indirecto (le):</strong> Di a María → Le di</p>
-                    <p style="margin-top:10px;"><strong>Ambos:</strong> Di el libro a María → Se lo di</p>
-                </div>
-                <div class="question" id="object-question"></div>
-                <input type="text" id="object-answer" placeholder="Escribe la oración transformada...">
-                <div class="hint" id="object-hint"></div>
-                <button class="btn-primary" onclick="checkObject()">Verificar</button>
-                <div id="object-feedback"></div>
-                <div class="score" id="object-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="orden" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Orden de Palabras</h2>
-                <div class="question">Ordena las palabras:</div>
-                <div id="word-bank" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; min-height: 60px; padding: 15px; background: #f8f9ff; border-radius: 8px; border: 2px dashed #667eea;"></div>
-                <div id="sentence-builder" style="display: flex; flex-wrap: wrap; gap: 10px; min-height: 60px; padding: 15px; background: white; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 20px;"></div>
-                <button class="btn-primary" onclick="checkOrden()" style="margin-bottom: 10px;">Verificar</button>
-                <button class="btn-primary" onclick="resetOrden()" style="background: #888;">Reiniciar</button>
-                <div id="orden-feedback"></div>
-                <div class="score" id="orden-score">Correctas: 0 | Intentos: 0</div>
-            </div>
-
-            <div id="flashcards" class="section">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Flashcards de Vocabulario</h2>
-                <p style="margin-bottom: 15px; color: #666;">Haz clic en la tarjeta para ver la traducción</p>
-                <div class="flashcard" id="flashcard" onclick="flipCard()">
-                    <div class="flashcard-content flashcard-front" id="card-front"></div>
-                    <div class="flashcard-content flashcard-back" id="card-back"></div>
-                </div>
-                <button class="btn-primary" onclick="nextFlashcard()">Siguiente Tarjeta</button>
-                <div class="score" id="flashcard-progress"></div>
-            </div>
-        </div>
+```
+    <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('conjugaciones')">Conjugaciones</button>
+        <button class="nav-btn" onclick="showSection('ser-estar')">Ser vs Estar</button>
+        <button class="nav-btn" onclick="showSection('frases')">Completar Frases</button>
+        <button class="nav-btn" onclick="showSection('preposiciones')">Preposiciones</button>
+        <button class="nav-btn" onclick="showSection('objetos')">Obj. Directo/Indirecto</button>
+        <button class="nav-btn" onclick="showSection('orden')">Orden de Palabras</button>
+        <button class="nav-btn" onclick="showSection('flashcards')">Flashcards</button>
     </div>
 
-    <script>
+    <div class="card">
+        <div id="conjugaciones" class="section active">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Practica Conjugaciones</h2>
+            <div class="question" id="conj-question"></div>
+            <div class="verb-info" id="verb-info"></div>
+            <div class="input-container">
+                <input type="text" id="conj-answer" placeholder="Escribe la conjugación...">
+                <div class="accent-keyboard" id="conj-keyboard"></div>
+            </div>
+            <button class="btn-primary" onclick="checkConjugation()">Verificar</button>
+            <div id="conj-feedback"></div>
+            <div class="score" id="conj-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="ser-estar" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Ser vs Estar</h2>
+            <button class="btn-primary" onclick="toggleSerEstarGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+            <div id="ser-estar-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                <p><strong>SER:</strong> características permanentes, identidad, profesión, origen, hora/fecha</p>
+                <p style="margin-top:10px;"><strong>ESTAR:</strong> estados temporales, ubicación, progresivo, resultado de cambio</p>
+                <p style="margin-top:10px;"><strong>⚠️ Cambian:</strong> ser listo (inteligente) vs estar listo (preparado)</p>
+            </div>
+            <div class="sentence" id="ser-estar-sentence"></div>
+            <div class="options" id="ser-estar-options"></div>
+            <button class="btn-primary" onclick="checkSerEstar()">Verificar</button>
+            <div id="ser-estar-feedback"></div>
+            <div class="score" id="ser-estar-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="frases" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Completar Frases</h2>
+            <button class="btn-primary" onclick="toggleFrasesGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+            <div id="frases-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                <p><strong>"A" Personal:</strong> antes de persona específica: "Veo a María"</p>
+                <p style="margin-top:10px;"><strong>Reflexivos:</strong> acción sobre sí mismo: "Me lavo"</p>
+                <p style="margin-top:10px;"><strong>Recíprocos:</strong> acción mutua: "Nos vemos"</p>
+            </div>
+            <div class="sentence" id="sentence"></div>
+            <div class="options" id="options"></div>
+            <button class="btn-primary" onclick="checkSentence()">Verificar</button>
+            <div id="sentence-feedback"></div>
+            <div class="score" id="sentence-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="preposiciones" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Preposiciones</h2>
+            <button class="btn-primary" onclick="togglePrepositionGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+            <div id="prep-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                <p><strong>POR:</strong> causa, medio, periodo</p>
+                <p style="margin-top:10px;"><strong>PARA:</strong> destino, propósito, deadline</p>
+                <p style="margin-top:10px;"><strong>A:</strong> movimiento | <strong>EN:</strong> ubicación</p>
+            </div>
+            <div class="sentence" id="prep-sentence"></div>
+            <div class="options" id="prep-options"></div>
+            <button class="btn-primary" onclick="checkPreposition()">Verificar</button>
+            <div id="prep-feedback"></div>
+            <div class="score" id="prep-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="objetos" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Objeto Directo/Indirecto</h2>
+            <button class="btn-primary" onclick="toggleObjectGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+            <div id="object-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
+                <p><strong>Directo (lo/la):</strong> Di el libro → Lo di</p>
+                <p style="margin-top:10px;"><strong>Indirecto (le):</strong> Di a María → Le di</p>
+                <p style="margin-top:10px;"><strong>Ambos:</strong> Di el libro a María → Se lo di</p>
+            </div>
+            <div class="question" id="object-question"></div>
+            <div class="input-container">
+                <input type="text" id="object-answer" placeholder="Escribe la oración transformada...">
+                <div class="accent-keyboard" id="object-keyboard"></div>
+            </div>
+            <div class="hint" id="object-hint"></div>
+            <button class="btn-primary" onclick="checkObject()">Verificar</button>
+            <div id="object-feedback"></div>
+            <div class="score" id="object-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="orden" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Orden de Palabras</h2>
+            <div class="question">Ordena las palabras:</div>
+            <div id="word-bank" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; min-height: 60px; padding: 15px; background: #f8f9ff; border-radius: 8px; border: 2px dashed #667eea;"></div>
+            <div id="sentence-builder" style="display: flex; flex-wrap: wrap; gap: 10px; min-height: 60px; padding: 15px; background: white; border-radius: 8px; border: 2px solid #667eea; margin-bottom: 20px;"></div>
+            <button class="btn-primary" onclick="checkOrden()" style="margin-bottom: 10px;">Verificar</button>
+            <button class="btn-primary" onclick="resetOrden()" style="background: #888;">Reiniciar</button>
+            <div id="orden-feedback"></div>
+            <div class="score" id="orden-score">Correctas: 0 | Intentos: 0</div>
+        </div>
+
+        <div id="flashcards" class="section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Flashcards de Vocabulario</h2>
+            <p style="margin-bottom: 15px; color: #666;">Haz clic en la tarjeta para ver la traducción</p>
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="flashcard-content flashcard-front" id="card-front"></div>
+                <div class="flashcard-content flashcard-back" id="card-back"></div>
+            </div>
+            <button class="btn-primary" onclick="nextFlashcard()">Siguiente Tarjeta</button>
+            <div class="score" id="flashcard-progress"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+```
+
+// Spanish accent characters
+const accentChars = [‘á’, ‘é’, ‘í’, ‘ó’, ‘ú’, ‘ñ’, ‘ü’, ‘Á’, ‘É’, ‘Í’, ‘Ó’, ‘Ú’, ‘Ñ’, ‘Ü’, ‘¿’, ‘¡’];
+
+// Initialize accent keyboards
+function initAccentKeyboard(inputId, keyboardId) {
+const input = document.getElementById(inputId);
+const keyboard = document.getElementById(keyboardId);
+
+```
+// Create accent buttons
+accentChars.forEach(char => {
+    const btn = document.createElement('button');
+    btn.className = 'accent-btn';
+    btn.textContent = char;
+    btn.type = 'button';
+    btn.onclick = (e) => {
+        e.preventDefault();
+        insertAccent(inputId, char);
+    };
+    keyboard.appendChild(btn);
+});
+
+// Show keyboard on focus
+input.addEventListener('focus', () => {
+    keyboard.classList.add('active');
+});
+
+// Keep keyboard visible while using it
+keyboard.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+});
+
+// Hide keyboard when clicking outside
+document.addEventListener('click', (e) => {
+    if (!input.contains(e.target) && !keyboard.contains(e.target)) {
+        keyboard.classList.remove('active');
+    }
+});
+```
+
+}
+
+function insertAccent(inputId, char) {
+const input = document.getElementById(inputId);
+const start = input.selectionStart;
+const end = input.selectionEnd;
+const text = input.value;
+
+```
+input.value = text.substring(0, start) + char + text.substring(end);
+input.focus();
+input.selectionStart = input.selectionEnd = start + 1;
+```
+
+}
+
 // DATOS - Verbos irregulares
 const irregularVerbs = [
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'presente',answer:'soy'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'presente',answer:'estás'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'presente',answer:'tiene'},
-    {verb:'hacer',infinitive:'hacer',person:'nosotros',tense:'presente',answer:'hacemos'},
-    {verb:'ir',infinitive:'ir',person:'ellos',tense:'presente',answer:'van'},
-    {verb:'poder',infinitive:'poder',person:'yo',tense:'presente',answer:'puedo'},
-    {verb:'querer',infinitive:'querer',person:'tú',tense:'presente',answer:'quieres'},
-    {verb:'decir',infinitive:'decir',person:'él',tense:'presente',answer:'dice'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'pretérito',answer:'fui'},
-    {verb:'estar',infinitive:'estar',person:'ella',tense:'pretérito',answer:'estuvo'},
-    {verb:'ir',infinitive:'ir',person:'ellos',tense:'pretérito',answer:'fueron'},
-    {verb:'hacer',infinitive:'hacer',person:'tú',tense:'pretérito',answer:'hiciste'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'pretérito',answer:'tuvo'},
-    {verb:'poder',infinitive:'poder',person:'yo',tense:'pretérito',answer:'pude'},
-    {verb:'poner',infinitive:'poner',person:'ustedes',tense:'pretérito',answer:'pusieron'},
-    {verb:'saber',infinitive:'saber',person:'él',tense:'pretérito',answer:'supo'},
-    {verb:'decir',infinitive:'decir',person:'yo',tense:'pretérito',answer:'dije'},
-    {verb:'venir',infinitive:'venir',person:'nosotros',tense:'pretérito',answer:'vinimos'},
-    {verb:'traer',infinitive:'traer',person:'ellos',tense:'pretérito',answer:'trajeron'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'imperfecto',answer:'era'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'imperfecto',answer:'estabas'},
-    {verb:'ir',infinitive:'ir',person:'ellos',tense:'imperfecto',answer:'iban'},
-    {verb:'tener',infinitive:'tener',person:'nosotros',tense:'imperfecto',answer:'teníamos'},
-    {verb:'ver',infinitive:'ver',person:'ella',tense:'imperfecto',answer:'veía'},
-    {verb:'hacer',infinitive:'hacer',person:'yo',tense:'imperfecto',answer:'hacía'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'futuro',answer:'seré'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'futuro',answer:'estarás'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'futuro',answer:'tendrá'},
-    {verb:'hacer',infinitive:'hacer',person:'nosotros',tense:'futuro',answer:'haremos'},
-    {verb:'poder',infinitive:'poder',person:'ellos',tense:'futuro',answer:'podrán'},
-    {verb:'saber',infinitive:'saber',person:'yo',tense:'futuro',answer:'sabré'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'condicional',answer:'sería'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'condicional',answer:'estarías'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'condicional',answer:'tendría'},
-    {verb:'hacer',infinitive:'hacer',person:'nosotros',tense:'condicional',answer:'haríamos'},
-    {verb:'poder',infinitive:'poder',person:'ellos',tense:'condicional',answer:'podrían'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'presente perfecto',answer:'he sido'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'presente perfecto',answer:'has estado'},
-    {verb:'hacer',infinitive:'hacer',person:'ella',tense:'presente perfecto',answer:'ha hecho'},
-    {verb:'ver',infinitive:'ver',person:'nosotros',tense:'presente perfecto',answer:'hemos visto'},
-    {verb:'decir',infinitive:'decir',person:'ellos',tense:'presente perfecto',answer:'han dicho'},
-    {verb:'poner',infinitive:'poner',person:'yo',tense:'presente perfecto',answer:'he puesto'},
-    {verb:'escribir',infinitive:'escribir',person:'tú',tense:'presente perfecto',answer:'has escrito'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'subjuntivo presente',answer:'sea'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'subjuntivo presente',answer:'estés'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'subjuntivo presente',answer:'tenga'},
-    {verb:'hacer',infinitive:'hacer',person:'nosotros',tense:'subjuntivo presente',answer:'hagamos'},
-    {verb:'ir',infinitive:'ir',person:'ellos',tense:'subjuntivo presente',answer:'vayan'},
-    {verb:'saber',infinitive:'saber',person:'yo',tense:'subjuntivo presente',answer:'sepa'},
-    {verb:'poder',infinitive:'poder',person:'tú',tense:'subjuntivo presente',answer:'puedas'},
-    {verb:'ser',infinitive:'ser',person:'yo',tense:'subjuntivo imperfecto',answer:'fuera'},
-    {verb:'estar',infinitive:'estar',person:'tú',tense:'subjuntivo imperfecto',answer:'estuvieras'},
-    {verb:'tener',infinitive:'tener',person:'ella',tense:'subjuntivo imperfecto',answer:'tuviera'},
-    {verb:'hacer',infinitive:'hacer',person:'nosotros',tense:'subjuntivo imperfecto',answer:'hiciéramos'},
-    {verb:'ir',infinitive:'ir',person:'ellos',tense:'subjuntivo imperfecto',answer:'fueran'},
-    {verb:'poder',infinitive:'poder',person:'yo',tense:'subjuntivo imperfecto',answer:'pudiera'}
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘presente’,answer:‘soy’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘presente’,answer:‘estás’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘presente’,answer:‘tiene’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘nosotros’,tense:‘presente’,answer:‘hacemos’},
+{verb:‘ir’,infinitive:‘ir’,person:‘ellos’,tense:‘presente’,answer:‘van’},
+{verb:‘poder’,infinitive:‘poder’,person:‘yo’,tense:‘presente’,answer:‘puedo’},
+{verb:‘querer’,infinitive:‘querer’,person:‘tú’,tense:‘presente’,answer:‘quieres’},
+{verb:‘decir’,infinitive:‘decir’,person:‘él’,tense:‘presente’,answer:‘dice’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘pretérito’,answer:‘fui’},
+{verb:‘estar’,infinitive:‘estar’,person:‘ella’,tense:‘pretérito’,answer:‘estuvo’},
+{verb:‘ir’,infinitive:‘ir’,person:‘ellos’,tense:‘pretérito’,answer:‘fueron’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘tú’,tense:‘pretérito’,answer:‘hiciste’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘pretérito’,answer:‘tuvo’},
+{verb:‘poder’,infinitive:‘poder’,person:‘yo’,tense:‘pretérito’,answer:‘pude’},
+{verb:‘poner’,infinitive:‘poner’,person:‘ustedes’,tense:‘pretérito’,answer:‘pusieron’},
+{verb:‘saber’,infinitive:‘saber’,person:‘él’,tense:‘pretérito’,answer:‘supo’},
+{verb:‘decir’,infinitive:‘decir’,person:‘yo’,tense:‘pretérito’,answer:‘dije’},
+{verb:‘venir’,infinitive:‘venir’,person:‘nosotros’,tense:‘pretérito’,answer:‘vinimos’},
+{verb:‘traer’,infinitive:‘traer’,person:‘ellos’,tense:‘pretérito’,answer:‘trajeron’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘imperfecto’,answer:‘era’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘imperfecto’,answer:‘estabas’},
+{verb:‘ir’,infinitive:‘ir’,person:‘ellos’,tense:‘imperfecto’,answer:‘iban’},
+{verb:‘tener’,infinitive:‘tener’,person:‘nosotros’,tense:‘imperfecto’,answer:‘teníamos’},
+{verb:‘ver’,infinitive:‘ver’,person:‘ella’,tense:‘imperfecto’,answer:‘veía’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘yo’,tense:‘imperfecto’,answer:‘hacía’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘futuro’,answer:‘seré’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘futuro’,answer:‘estarás’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘futuro’,answer:‘tendrá’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘nosotros’,tense:‘futuro’,answer:‘haremos’},
+{verb:‘poder’,infinitive:‘poder’,person:‘ellos’,tense:‘futuro’,answer:‘podrán’},
+{verb:‘saber’,infinitive:‘saber’,person:‘yo’,tense:‘futuro’,answer:‘sabré’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘condicional’,answer:‘sería’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘condicional’,answer:‘estarías’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘condicional’,answer:‘tendría’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘nosotros’,tense:‘condicional’,answer:‘haríamos’},
+{verb:‘poder’,infinitive:‘poder’,person:‘ellos’,tense:‘condicional’,answer:‘podrían’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘presente perfecto’,answer:‘he sido’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘presente perfecto’,answer:‘has estado’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘ella’,tense:‘presente perfecto’,answer:‘ha hecho’},
+{verb:‘ver’,infinitive:‘ver’,person:‘nosotros’,tense:‘presente perfecto’,answer:‘hemos visto’},
+{verb:‘decir’,infinitive:‘decir’,person:‘ellos’,tense:‘presente perfecto’,answer:‘han dicho’},
+{verb:‘poner’,infinitive:‘poner’,person:‘yo’,tense:‘presente perfecto’,answer:‘he puesto’},
+{verb:‘escribir’,infinitive:‘escribir’,person:‘tú’,tense:‘presente perfecto’,answer:‘has escrito’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘subjuntivo presente’,answer:‘sea’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘subjuntivo presente’,answer:‘estés’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘subjuntivo presente’,answer:‘tenga’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘nosotros’,tense:‘subjuntivo presente’,answer:‘hagamos’},
+{verb:‘ir’,infinitive:‘ir’,person:‘ellos’,tense:‘subjuntivo presente’,answer:‘vayan’},
+{verb:‘saber’,infinitive:‘saber’,person:‘yo’,tense:‘subjuntivo presente’,answer:‘sepa’},
+{verb:‘poder’,infinitive:‘poder’,person:‘tú’,tense:‘subjuntivo presente’,answer:‘puedas’},
+{verb:‘ser’,infinitive:‘ser’,person:‘yo’,tense:‘subjuntivo imperfecto’,answer:‘fuera’},
+{verb:‘estar’,infinitive:‘estar’,person:‘tú’,tense:‘subjuntivo imperfecto’,answer:‘estuvieras’},
+{verb:‘tener’,infinitive:‘tener’,person:‘ella’,tense:‘subjuntivo imperfecto’,answer:‘tuviera’},
+{verb:‘hacer’,infinitive:‘hacer’,person:‘nosotros’,tense:‘subjuntivo imperfecto’,answer:‘hiciéramos’},
+{verb:‘ir’,infinitive:‘ir’,person:‘ellos’,tense:‘subjuntivo imperfecto’,answer:‘fueran’},
+{verb:‘poder’,infinitive:‘poder’,person:‘yo’,tense:‘subjuntivo imperfecto’,answer:‘pudiera’}
 ];
 
 // DATOS - Ser vs Estar
 const serEstarExercises = [
-    {text:'Mi hermana ___ muy inteligente.',options:['es','está'],correct:0,explanation:'SER: característica permanente.'},
-    {text:'Hoy ___ muy cansada del trabajo.',options:['soy','estoy'],correct:1,explanation:'ESTAR: estado temporal.'},
-    {text:'La comida ___ deliciosa. ¡Felicidades!',options:['es','está'],correct:1,explanation:'ESTAR rico = saber bien.'},
-    {text:'Ese restaurante ___ muy bueno.',options:['es','está'],correct:0,explanation:'SER: característica general.'},
-    {text:'Mi hijo ___ enfermo desde ayer.',options:['es','está'],correct:1,explanation:'ESTAR: estado temporal de salud.'},
-    {text:'La reunión ___ en la sala.',options:['es','está'],correct:0,explanation:'SER: eventos y ubicaciones.'},
-    {text:'Mi casa ___ cerca del parque.',options:['es','está'],correct:1,explanation:'ESTAR: ubicación física.'},
-    {text:'¿Dónde ___ el baño?',options:['es','está'],correct:1,explanation:'ESTAR: ubicación.'},
-    {text:'___ profesora de español.',options:['Soy','Estoy'],correct:0,explanation:'SER: profesión.'},
-    {text:'Él ___ mi hermano mayor.',options:['es','está'],correct:0,explanation:'SER: identidad.'},
-    {text:'___ de Colombia.',options:['Soy','Estoy'],correct:0,explanation:'SER: origen.'},
-    {text:'Esta mesa ___ de madera.',options:['es','está'],correct:0,explanation:'SER: material.'},
-    {text:'Pedro ___ muy listo, saca buenas notas.',options:['es','está'],correct:0,explanation:'SER listo = inteligente.'},
-    {text:'¿___ listo para salir?',options:['Eres','Estás'],correct:1,explanation:'ESTAR listo = preparado.'},
-    {text:'Esa película ___ muy aburrida.',options:['es','está'],correct:0,explanation:'SER aburrido = característica.'},
-    {text:'___ aburrido, no hay nada que hacer.',options:['Soy','Estoy'],correct:1,explanation:'ESTAR aburrido = sentirse aburrido.'},
-    {text:'Mi tío ___ muy rico, tiene tres casas.',options:['es','está'],correct:0,explanation:'SER rico = adinerado.'},
-    {text:'La puerta ___ abierta.',options:['es','está'],correct:1,explanation:'ESTAR: resultado de cambio.'},
-    {text:'___ las tres de la tarde.',options:['Son','Están'],correct:0,explanation:'SER: hora.'},
-    {text:'Hoy ___ lunes.',options:['es','está'],correct:0,explanation:'SER: día.'},
-    {text:'El café ___ frío.',options:['es','está'],correct:1,explanation:'ESTAR: estado actual.'},
-    {text:'Esta silla ___ muy cómoda.',options:['es','está'],correct:0,explanation:'SER: característica inherente.'},
-    {text:'___ nerviosa por el examen.',options:['Soy','Estoy'],correct:1,explanation:'ESTAR: estado emocional temporal.'},
-    {text:'Mi padre ___ policía.',options:['es','está'],correct:0,explanation:'SER: profesión.'}
+{text:‘Mi hermana ___ muy inteligente.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: característica permanente.’},
+{text:‘Hoy ___ muy cansada del trabajo.’,options:[‘soy’,‘estoy’],correct:1,explanation:‘ESTAR: estado temporal.’},
+{text:‘La comida ___ deliciosa. ¡Felicidades!’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR rico = saber bien.’},
+{text:‘Ese restaurante ___ muy bueno.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: característica general.’},
+{text:‘Mi hijo ___ enfermo desde ayer.’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR: estado temporal de salud.’},
+{text:‘La reunión ___ en la sala.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: eventos y ubicaciones.’},
+{text:‘Mi casa ___ cerca del parque.’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR: ubicación física.’},
+{text:’¿Dónde ___ el baño?’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR: ubicación.’},
+{text:’___ profesora de español.’,options:[‘Soy’,‘Estoy’],correct:0,explanation:‘SER: profesión.’},
+{text:‘Él ___ mi hermano mayor.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: identidad.’},
+{text:’___ de Colombia.’,options:[‘Soy’,‘Estoy’],correct:0,explanation:‘SER: origen.’},
+{text:‘Esta mesa ___ de madera.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: material.’},
+{text:‘Pedro ___ muy listo, saca buenas notas.’,options:[‘es’,‘está’],correct:0,explanation:‘SER listo = inteligente.’},
+{text:’¿___ listo para salir?’,options:[‘Eres’,‘Estás’],correct:1,explanation:‘ESTAR listo = preparado.’},
+{text:‘Esa película ___ muy aburrida.’,options:[‘es’,‘está’],correct:0,explanation:‘SER aburrido = característica.’},
+{text:’___ aburrido, no hay nada que hacer.’,options:[‘Soy’,‘Estoy’],correct:1,explanation:‘ESTAR aburrido = sentirse aburrido.’},
+{text:‘Mi tío ___ muy rico, tiene tres casas.’,options:[‘es’,‘está’],correct:0,explanation:‘SER rico = adinerado.’},
+{text:‘La puerta ___ abierta.’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR: resultado de cambio.’},
+{text:’___ las tres de la tarde.’,options:[‘Son’,‘Están’],correct:0,explanation:‘SER: hora.’},
+{text:‘Hoy ___ lunes.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: día.’},
+{text:‘El café ___ frío.’,options:[‘es’,‘está’],correct:1,explanation:‘ESTAR: estado actual.’},
+{text:‘Esta silla ___ muy cómoda.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: característica inherente.’},
+{text:’___ nerviosa por el examen.’,options:[‘Soy’,‘Estoy’],correct:1,explanation:‘ESTAR: estado emocional temporal.’},
+{text:‘Mi padre ___ policía.’,options:[‘es’,‘está’],correct:0,explanation:‘SER: profesión.’}
 ];
+
 // DATOS - Completar Frases
 const sentences = [
-    {text:'Cuando mi abuela ___ niña, siempre ___ al parque.',options:['era/iba','fui/fui','era/fui','fui/iba'],correct:0,explanation:'Imperfecto para acciones habituales.'},
-    {text:'Anoche yo ___ una película cuando tú me ___.',options:['vi/llamaste','veía/llamabas','veía/llamaste','vi/llamabas'],correct:2,explanation:'Imperfecto para acción en progreso, pretérito para interrupción.'},
-    {text:'Ayer ___ al cine y ___ una película excelente.',options:['iba/veía','fui/vi','iba/vi','fui/veía'],correct:1,explanation:'Pretérito para acciones completadas.'},
-    {text:'Mientras ___ por el parque, ___ a un viejo amigo.',options:['caminaba/encontré','caminé/encontraba','caminaba/encontraba','caminé/encontré'],correct:0,explanation:'Imperfecto para contexto, pretérito para evento.'},
-    {text:'Cuando ___ joven, ___ mucho deporte.',options:['era/practicaba','fui/practiqué','era/practiqué','fui/practicaba'],correct:0,explanation:'Imperfecto para descripciones habituales.'},
-    {text:'Es importante que tú ___ la tarea.',options:['haces','hagas','hiciste','harás'],correct:1,explanation:'Es importante que + subjuntivo.'},
-    {text:'Ojalá que ___ buen tiempo mañana.',options:['hace','haga','hizo','hacía'],correct:1,explanation:'Ojalá + subjuntivo.'},
-    {text:'No creo que ella ___ la respuesta.',options:['sabe','sepa','supo','sabía'],correct:1,explanation:'No creo que + subjuntivo (duda).'},
-    {text:'Es evidente que tú ___ razón.',options:['tienes','tengas','tuviste','tendrás'],correct:0,explanation:'Es evidente + indicativo (certeza).'},
-    {text:'Me alegra que ___ aquí conmigo.',options:['estás','estés','estuviste','estarás'],correct:1,explanation:'Emoción + subjuntivo.'},
-    {text:'Ayer vi ___ tu hermana.',options:['a','—','de','para'],correct:0,explanation:'A personal con persona específica.'},
-    {text:'Busco ___ un buen mecánico.',options:['a','—','de','para'],correct:1,explanation:'No se usa con persona indefinida.'},
-    {text:'Conozco ___ María desde hace años.',options:['a','—','de','con'],correct:0,explanation:'Conocer + persona = a personal.'},
-    {text:'Necesito ___ alguien que me ayude.',options:['a','—','de','para'],correct:1,explanation:'Alguien indefinido en subjuntivo.'},
-    {text:'Invité ___ todos mis amigos.',options:['a','—','para','con'],correct:0,explanation:'A personal con grupo específico.'},
-    {text:'Tengo ___ tres gatos en casa.',options:['a','—','de','con'],correct:1,explanation:'No se usa con animales generalmente.'},
-    {text:'Llamé ___ mi madre esta mañana.',options:['a','—','para','con'],correct:0,explanation:'A personal con verbos de comunicación.'},
-    {text:'Vi ___ la película que recomendaste.',options:['a','—','de','para'],correct:1,explanation:'No se usa con objetos.'},
-    {text:'Todas las mañanas ___ el pelo.',options:['me lavo','lavo','me he lavado','lavaré'],correct:0,explanation:'Reflexivo: acción sobre sí mismo.'},
-    {text:'Ella ___ a su bebé.',options:['se baña','baña','se bañó','bañará'],correct:1,explanation:'No reflexivo: acción sobre otra persona.'},
-    {text:'Necesito ___ antes de la reunión.',options:['me preparar','prepararme','preparo','preparar'],correct:1,explanation:'Con infinitivo, pronombre después.'},
-    {text:'___ muy feliz con la noticia.',options:['Me siento','Siento','Me sentí','Sentiré'],correct:0,explanation:'Sentirse = estado emocional propio.'},
-    {text:'Mi abuela ___ a las 6 todos los días.',options:['levanta','se levanta','ha levantado','levantará'],correct:1,explanation:'Levantarse = reflexivo.'},
-    {text:'Por favor, ___ ese libro del estante.',options:['te levantas','levanta','levántate','se levanta'],correct:1,explanation:'No reflexivo: levantar objeto.'},
-    {text:'Cada noche ___ los dientes.',options:['lavo','me lavo','lavé','he lavado'],correct:1,explanation:'Reflexivo con partes del cuerpo.'},
-    {text:'Mi novio y yo ___ todos los días.',options:['vemos','nos vemos','se ven','veo'],correct:1,explanation:'Recíproco: acción mutua.'},
-    {text:'Ellos ___ en la universidad hace años.',options:['conocieron','se conocieron','conocen','nos conocimos'],correct:1,explanation:'Recíproco: se conocieron mutuamente.'},
-    {text:'Mis hermanas ___ mensajes todo el día.',options:['envían','se envían','envió','nos enviamos'],correct:1,explanation:'Recíproco: entre ellas.'},
-    {text:'Tú y yo ___ mañana en el café, ¿no?',options:['vemos','nos vemos','se ven','ve'],correct:1,explanation:'Recíproco entre tú y yo.'},
-    {text:'Los vecinos no ___ desde el incidente.',options:['hablan','se hablan','habló','nos hablamos'],correct:1,explanation:'Recíproco: no se comunican.'}
+{text:‘Cuando mi abuela ___ niña, siempre ___ al parque.’,options:[‘era/iba’,‘fui/fui’,‘era/fui’,‘fui/iba’],correct:0,explanation:‘Imperfecto para acciones habituales.’},
+{text:‘Anoche yo ___ una película cuando tú me ***.’,options:[‘vi/llamaste’,‘veía/llamabas’,‘veía/llamaste’,‘vi/llamabas’],correct:2,explanation:‘Imperfecto para acción en progreso, pretérito para interrupción.’},
+{text:‘Ayer ___ al cine y ___ una película excelente.’,options:[‘iba/veía’,‘fui/vi’,‘iba/vi’,‘fui/veía’],correct:1,explanation:‘Pretérito para acciones completadas.’},
+{text:‘Mientras ___ por el parque, ___ a un viejo amigo.’,options:[‘caminaba/encontré’,‘caminé/encontraba’,‘caminaba/encontraba’,‘caminé/encontré’],correct:0,explanation:‘Imperfecto para contexto, pretérito para evento.’},
+{text:‘Cuando ___ joven, ___ mucho deporte.’,options:[‘era/practicaba’,‘fui/practiqué’,‘era/practiqué’,‘fui/practicaba’],correct:0,explanation:‘Imperfecto para descripciones habituales.’},
+{text:‘Es importante que tú ___ la tarea.’,options:[‘haces’,‘hagas’,‘hiciste’,‘harás’],correct:1,explanation:‘Es importante que + subjuntivo.’},
+{text:‘Ojalá que ___ buen tiempo mañana.’,options:[‘hace’,‘haga’,‘hizo’,‘hacía’],correct:1,explanation:‘Ojalá + subjuntivo.’},
+{text:‘No creo que ella ___ la respuesta.’,options:[‘sabe’,‘sepa’,‘supo’,‘sabía’],correct:1,explanation:‘No creo que + subjuntivo (duda).’},
+{text:‘Es evidente que tú ___ razón.’,options:[‘tienes’,‘tengas’,‘tuviste’,‘tendrás’],correct:0,explanation:‘Es evidente + indicativo (certeza).’},
+{text:‘Me alegra que ___ aquí conmigo.’,options:[‘estás’,‘estés’,‘estuviste’,‘estarás’],correct:1,explanation:‘Emoción + subjuntivo.’},
+{text:‘Ayer vi ___ tu hermana.’,options:[‘a’,’—’,‘de’,‘para’],correct:0,explanation:‘A personal con persona específica.’},
+{text:‘Busco ___ un buen mecánico.’,options:[‘a’,’—’,‘de’,‘para’],correct:1,explanation:‘No se usa con persona indefinida.’},
+{text:‘Conozco ___ María desde hace años.’,options:[‘a’,’—’,‘de’,‘con’],correct:0,explanation:‘Conocer + persona = a personal.’},
+{text:‘Necesito ___ alguien que me ayude.’,options:[‘a’,’—’,‘de’,‘para’],correct:1,explanation:‘Alguien indefinido en subjuntivo.’},
+{text:‘Invité ___ todos mis amigos.’,options:[‘a’,’—’,‘para’,‘con’],correct:0,explanation:‘A personal con grupo específico.’},
+{text:‘Tengo ___ tres gatos en casa.’,options:[‘a’,’—’,‘de’,‘con’],correct:1,explanation:‘No se usa con animales generalmente.’},
+{text:‘Llamé ___ mi madre esta mañana.’,options:[‘a’,’—’,‘para’,‘con’],correct:0,explanation:‘A personal con verbos de comunicación.’},
+{text:‘Vi ___ la película que recomendaste.’,options:[‘a’,’—’,‘de’,‘para’],correct:1,explanation:‘No se usa con objetos.’},
+{text:‘Todas las mañanas ___ el pelo.’,options:[‘me lavo’,‘lavo’,‘me he lavado’,‘lavaré’],correct:0,explanation:‘Reflexivo: acción sobre sí mismo.’},
+{text:‘Ella ___ a su bebé.’,options:[‘se baña’,‘baña’,‘se bañó’,‘bañará’],correct:1,explanation:‘No reflexivo: acción sobre otra persona.’},
+{text:‘Necesito ___ antes de la reunión.’,options:[‘me preparar’,‘prepararme’,‘preparo’,‘preparar’],correct:1,explanation:‘Con infinitivo, pronombre después.’},
+{text:’*** muy feliz con la noticia.’,options:[‘Me siento’,‘Siento’,‘Me sentí’,‘Sentiré’],correct:0,explanation:‘Sentirse = estado emocional propio.’},
+{text:‘Mi abuela ___ a las 6 todos los días.’,options:[‘levanta’,‘se levanta’,‘ha levantado’,‘levantará’],correct:1,explanation:‘Levantarse = reflexivo.’},
+{text:‘Por favor, ___ ese libro del estante.’,options:[‘te levantas’,‘levanta’,‘levántate’,‘se levanta’],correct:1,explanation:‘No reflexivo: levantar objeto.’},
+{text:‘Cada noche ___ los dientes.’,options:[‘lavo’,‘me lavo’,‘lavé’,‘he lavado’],correct:1,explanation:‘Reflexivo con partes del cuerpo.’},
+{text:‘Mi novio y yo ___ todos los días.’,options:[‘vemos’,‘nos vemos’,‘se ven’,‘veo’],correct:1,explanation:‘Recíproco: acción mutua.’},
+{text:‘Ellos ___ en la universidad hace años.’,options:[‘conocieron’,‘se conocieron’,‘conocen’,‘nos conocimos’],correct:1,explanation:‘Recíproco: se conocieron mutuamente.’},
+{text:‘Mis hermanas ___ mensajes todo el día.’,options:[‘envían’,‘se envían’,‘envió’,‘nos enviamos’],correct:1,explanation:‘Recíproco: entre ellas.’},
+{text:‘Tú y yo ___ mañana en el café, ¿no?’,options:[‘vemos’,‘nos vemos’,‘se ven’,‘ve’],correct:1,explanation:‘Recíproco entre tú y yo.’},
+{text:‘Los vecinos no ___ desde el incidente.’,options:[‘hablan’,‘se hablan’,‘habló’,‘nos hablamos’],correct:1,explanation:‘Recíproco: no se comunican.’}
 ];
 
 // DATOS - Preposiciones
 const prepositionExercises = [
-    {sentence:'Trabajo ___ conseguir dinero.',options:['por','para','a','en'],correct:1,explanation:'PARA expresa propósito.'},
-    {sentence:'Hablamos ___ teléfono toda la noche.',options:['por','para','a','con'],correct:0,explanation:'POR indica medio.'},
-    {sentence:'Voy ___ la escuela todos los días.',options:['en','a','para','de'],correct:1,explanation:'A indica movimiento.'},
-    {sentence:'Estoy ___ la biblioteca estudiando.',options:['a','en','por','para'],correct:1,explanation:'EN indica ubicación.'},
-    {sentence:'Soy ___ Colombia.',options:['desde','de','a','por'],correct:1,explanation:'DE indica origen.'},
-    {sentence:'Trabajo aquí ___ enero.',options:['de','desde','por','para'],correct:1,explanation:'DESDE marca inicio en tiempo.'},
-    {sentence:'Este regalo es ___ ti.',options:['por','para','a','de'],correct:1,explanation:'PARA indica destinatario.'},
-    {sentence:'Caminamos ___ el parque.',options:['por','para','en','a'],correct:0,explanation:'POR indica movimiento a través.'},
-    {sentence:'El libro está ___ la mesa.',options:['en','a','sobre','en o sobre'],correct:3,explanation:'EN y SOBRE para posición en superficie.'},
-    {sentence:'Salgo ___ Madrid mañana.',options:['a','para','en','por'],correct:1,explanation:'PARA indica destino con intención.'}
+{sentence:‘Trabajo ___ conseguir dinero.’,options:[‘por’,‘para’,‘a’,‘en’],correct:1,explanation:‘PARA expresa propósito.’},
+{sentence:‘Hablamos ___ teléfono toda la noche.’,options:[‘por’,‘para’,‘a’,‘con’],correct:0,explanation:‘POR indica medio.’},
+{sentence:‘Voy ___ la escuela todos los días.’,options:[‘en’,‘a’,‘para’,‘de’],correct:1,explanation:‘A indica movimiento.’},
+{sentence:‘Estoy ___ la biblioteca estudiando.’,options:[‘a’,‘en’,‘por’,‘para’],correct:1,explanation:‘EN indica ubicación.’},
+{sentence:‘Soy ___ Colombia.’,options:[‘desde’,‘de’,‘a’,‘por’],correct:1,explanation:‘DE indica origen.’},
+{sentence:‘Trabajo aquí ___ enero.’,options:[‘de’,‘desde’,‘por’,‘para’],correct:1,explanation:‘DESDE marca inicio en tiempo.’},
+{sentence:‘Este regalo es ___ ti.’,options:[‘por’,‘para’,‘a’,‘de’],correct:1,explanation:‘PARA indica destinatario.’},
+{sentence:‘Caminamos ___ el parque.’,options:[‘por’,‘para’,‘en’,‘a’],correct:0,explanation:‘POR indica movimiento a través.’},
+{sentence:‘El libro está ___ la mesa.’,options:[‘en’,‘a’,‘sobre’,‘en o sobre’],correct:3,explanation:‘EN y SOBRE para posición en superficie.’},
+{sentence:‘Salgo ___ Madrid mañana.’,options:[‘a’,‘para’,‘en’,‘por’],correct:1,explanation:‘PARA indica destino con intención.’}
 ];
 
 // DATOS - Objeto Directo/Indirecto
 const objectExercises = [
-    {original:'Di el libro a María',answer:'se lo di',hint:'se + lo',type:'both'},
-    {original:'Compré flores para mi madre',answer:'se las compré',hint:'se + las',type:'both'},
-    {original:'Enviamos el paquete a Juan',answer:'se lo enviamos',hint:'se + lo',type:'both'},
-    {original:'Veo la película',answer:'la veo',hint:'la',type:'direct'},
-    {original:'Compró los zapatos',answer:'los compró',hint:'los',type:'direct'},
-    {original:'Expliqué la situación a mis padres',answer:'se la expliqué',hint:'se + la',type:'both'},
-    {original:'Presté mi carro a Pedro',answer:'se lo presté',hint:'se + lo',type:'both'},
-    {original:'Leo el periódico',answer:'lo leo',hint:'lo',type:'direct'},
-    {original:'Dimos las gracias a la profesora',answer:'se las dimos',hint:'se + las',type:'both'},
-    {original:'Mostré las fotos a mi hermana',answer:'se las mostré',hint:'se + las',type:'both'}
+{original:‘Di el libro a María’,answer:‘se lo di’,hint:‘se + lo’,type:‘both’},
+{original:‘Compré flores para mi madre’,answer:‘se las compré’,hint:‘se + las’,type:‘both’},
+{original:‘Enviamos el paquete a Juan’,answer:‘se lo enviamos’,hint:‘se + lo’,type:‘both’},
+{original:‘Veo la película’,answer:‘la veo’,hint:‘la’,type:‘direct’},
+{original:‘Compró los zapatos’,answer:‘los compró’,hint:‘los’,type:‘direct’},
+{original:‘Expliqué la situación a mis padres’,answer:‘se la expliqué’,hint:‘se + la’,type:‘both’},
+{original:‘Presté mi carro a Pedro’,answer:‘se lo presté’,hint:‘se + lo’,type:‘both’},
+{original:‘Leo el periódico’,answer:‘lo leo’,hint:‘lo’,type:‘direct’},
+{original:‘Dimos las gracias a la profesora’,answer:‘se las dimos’,hint:‘se + las’,type:‘both’},
+{original:‘Mostré las fotos a mi hermana’,answer:‘se las mostré’,hint:‘se + las’,type:‘both’}
 ];
 
 // DATOS - Orden de Palabras
 const ordenExercises = [
-    {words:['zapatos','nuevos','compré','unos'],correct:'compré unos zapatos nuevos',variations:['compré unos nuevos zapatos']},
-    {words:['está','mi','en','hermana','la','escuela'],correct:'mi hermana está en la escuela',variations:[]},
-    {words:['gusta','mucho','me','el','chocolate'],correct:'me gusta mucho el chocolate',variations:['el chocolate me gusta mucho']},
-    {words:['a','voy','ir','cine','al','mañana'],correct:'voy a ir al cine mañana',variations:['mañana voy a ir al cine']},
-    {words:['casa','grande','una','tienen','muy'],correct:'tienen una casa muy grande',variations:[]},
-    {words:['libro','interesante','un','leyendo','estoy'],correct:'estoy leyendo un libro interesante',variations:[]},
-    {words:['temprano','levanto','me','siempre'],correct:'siempre me levanto temprano',variations:['me levanto temprano siempre']},
-    {words:['roja','la','camisa','prefiero'],correct:'prefiero la camisa roja',variations:[]},
-    {words:['no','español','habla','bien','él'],correct:'él no habla bien español',variations:['él no habla español bien']},
-    {words:['comida','preparó','deliciosa','una','mamá','mi'],correct:'mi mamá preparó una comida deliciosa',variations:[]}
+{words:[‘zapatos’,‘nuevos’,‘compré’,‘unos’],correct:‘compré unos zapatos nuevos’,variations:[‘compré unos nuevos zapatos’]},
+{words:[‘está’,‘mi’,‘en’,‘hermana’,‘la’,‘escuela’],correct:‘mi hermana está en la escuela’,variations:[]},
+{words:[‘gusta’,‘mucho’,‘me’,‘el’,‘chocolate’],correct:‘me gusta mucho el chocolate’,variations:[‘el chocolate me gusta mucho’]},
+{words:[‘a’,‘voy’,‘ir’,‘cine’,‘al’,‘mañana’],correct:‘voy a ir al cine mañana’,variations:[‘mañana voy a ir al cine’]},
+{words:[‘casa’,‘grande’,‘una’,‘tienen’,‘muy’],correct:‘tienen una casa muy grande’,variations:[]},
+{words:[‘libro’,‘interesante’,‘un’,‘leyendo’,‘estoy’],correct:‘estoy leyendo un libro interesante’,variations:[]},
+{words:[‘temprano’,‘levanto’,‘me’,‘siempre’],correct:‘siempre me levanto temprano’,variations:[‘me levanto temprano siempre’]},
+{words:[‘roja’,‘la’,‘camisa’,‘prefiero’],correct:‘prefiero la camisa roja’,variations:[]},
+{words:[‘no’,‘español’,‘habla’,‘bien’,‘él’],correct:‘él no habla bien español’,variations:[‘él no habla español bien’]},
+{words:[‘comida’,‘preparó’,‘deliciosa’,‘una’,‘mamá’,‘mi’],correct:‘mi mamá preparó una comida deliciosa’,variations:[]}
 ];
 
-// DATOS - Flashcards (primeras 50 de 100)
+// DATOS - Flashcards
 const flashcards = [
-    {spanish:'el atolladero',english:'predicament, tight spot',example:'Se metió en un atolladero del que no puede salir.'},
-    {spanish:'la desventura',english:'misfortune',example:'Sufrió muchas desventuras durante su viaje.'},
-    {spanish:'el desenlace',english:'outcome, denouement',example:'El desenlace de la historia fue inesperado.'},
-    {spanish:'la estirpe',english:'lineage, descent',example:'Viene de una estirpe noble.'},
-    {spanish:'el desasosiego',english:'unease, restlessness',example:'Sentía un desasosiego constante.'},
-    {spanish:'la penumbra',english:'half-light, dimness',example:'Caminaba por la penumbra del pasillo.'},
-    {spanish:'el hastío',english:'weariness, tedium',example:'El hastío se apoderó de él.'},
-    {spanish:'deambular',english:'to wander aimlessly',example:'Deambulaba por las calles sin rumbo.'},
-    {spanish:'subsistir',english:'to subsist',example:'Apenas podía subsistir con ese salario.'},
-    {spanish:'desfallecer',english:'to faint, to weaken',example:'Desfallecía de hambre y sed.'},
-    {spanish:'acechar',english:'to lurk, to stalk',example:'El peligro acechaba en cada esquina.'},
-    {spanish:'desdeñar',english:'to disdain, to scorn',example:'Desdeñó la oferta sin pensarlo.'},
-    {spanish:'avivar',english:'to stoke, to revive',example:'Avivó el fuego con más leña.'},
-    {spanish:'insólito/a',english:'unusual, strange',example:'Fue un evento insólito.'},
-    {spanish:'pudiente',english:'wealthy, well-off',example:'Una familia pudiente de la ciudad.'},
-    {spanish:'intrépido/a',english:'intrepid, fearless',example:'Un explorador intrépido.'},
-    {spanish:'desolado/a',english:'desolate',example:'Un paisaje desolado.'},
-    {spanish:'azaroso/a',english:'risky, eventful',example:'Una vida azarosa y llena de aventuras.'},
-    {spanish:'atribulado/a',english:'distressed, troubled',example:'Se veía atribulado por las noticias.'},
-    {spanish:'la cordura',english:'sanity, good sense',example:'Perdió la cordura después del accidente.'},
-    {spanish:'la osadía',english:'audacity, boldness',example:'Tuvo la osadía de enfrentarlo.'},
-    {spanish:'el recelo',english:'suspicion, mistrust',example:'Lo miraba con recelo.'},
-    {spanish:'la zozobra',english:'anxiety, anguish',example:'Vivía en constante zozobra.'},
-    {spanish:'dar cuenta de',english:'to realize, to account for',example:'Me di cuenta de mi error demasiado tarde.'},
-    {spanish:'hacer caso omiso',english:'to ignore, to disregard',example:'Hizo caso omiso de las advertencias.'},
-    {spanish:'salir a flote',english:'to stay afloat, to get by',example:'Logró salir a flote después de la crisis.'},
-    {spanish:'perder los estribos',english:'to lose one\'s temper',example:'Perdió los estribos y gritó.'},
-    {spanish:'quedar en nada',english:'to come to nothing',example:'El proyecto quedó en nada.'},
-    {spanish:'la porfía',english:'stubbornness, persistence',example:'Su porfía lo ayudó a lograrlo.'},
-    {spanish:'menesteroso/a',english:'needy',example:'Ayudaba a los menesterosos del pueblo.'},
-    {spanish:'descargar',english:'to download',example:'Voy a descargar la aplicación.'},
-    {spanish:'subir (un archivo)',english:'to upload',example:'Subí las fotos a la nube.'},
-    {spanish:'la contraseña',english:'password',example:'Olvidé mi contraseña.'},
-    {spanish:'el archivo adjunto',english:'attachment',example:'Envié el documento como archivo adjunto.'},
-    {spanish:'el enlace',english:'link',example:'Haz clic en el enlace.'},
-    {spanish:'la pantalla',english:'screen',example:'La pantalla se congeló.'},
-    {spanish:'guardar',english:'to save',example:'No olvides guardar los cambios.'},
-    {spanish:'actualizar',english:'to update',example:'Necesito actualizar el sistema.'},
-    {spanish:'la aplicación (app)',english:'application, app',example:'Descargué una app nueva.'},
-    {spanish:'el buscador',english:'search engine',example:'Lo busqué en el buscador.'},
-    {spanish:'el usuario',english:'user',example:'Crea un nombre de usuario.'},
-    {spanish:'la red social',english:'social network',example:'No uso redes sociales.'},
-    {spanish:'compartir',english:'to share',example:'Compartí el artículo en mis redes.'},
-    {spanish:'el atasco / el taco',english:'traffic jam',example:'Hay un atasco tremendo.'},
-    {spanish:'el carril',english:'lane',example:'Cambia al carril derecho.'},
-    {spanish:'el semáforo',english:'traffic light',example:'Para en el semáforo.'},
-    {spanish:'la acera / la vereda',english:'sidewalk',example:'Caminaba por la acera.'},
-    {spanish:'el transeúnte',english:'passerby',example:'Un transeúnte le preguntó la hora.'},
-    {spanish:'la cola / la fila',english:'line, queue',example:'Hay mucha cola en el banco.'},
-    {spanish:'el letrero',english:'sign',example:'Lee el letrero antes de entrar.'}
+{spanish:‘el atolladero’,english:‘predicament, tight spot’,example:‘Se metió en un atolladero del que no puede salir.’},
+{spanish:‘la desventura’,english:‘misfortune’,example:‘Sufrió muchas desventuras durante su viaje.’},
+{spanish:‘el desenlace’,english:‘outcome, denouement’,example:‘El desenlace de la historia fue inesperado.’},
+{spanish:‘la estirpe’,english:‘lineage, descent’,example:‘Viene de una estirpe noble.’},
+{spanish:‘el desasosiego’,english:‘unease, restlessness’,example:‘Sentía un desasosiego constante.’},
+{spanish:‘la penumbra’,english:‘half-light, dimness’,example:‘Caminaba por la penumbra del pasillo.’},
+{spanish:‘el hastío’,english:‘weariness, tedium’,example:‘El hastío se apoderó de él.’},
+{spanish:‘deambular’,english:‘to wander aimlessly’,example:‘Deambulaba por las calles sin rumbo.’},
+{spanish:‘subsistir’,english:‘to subsist’,example:‘Apenas podía subsistir con ese salario.’},
+{spanish:‘desfallecer’,english:‘to faint, to weaken’,example:‘Desfallecía de hambre y sed.’},
+{spanish:‘acechar’,english:‘to lurk, to stalk’,example:‘El peligro acechaba en cada esquina.’},
+{spanish:‘desdeñar’,english:‘to disdain, to scorn’,example:‘Desdeñó la oferta sin pensarlo.’},
+{spanish:‘avivar’,english:‘to stoke, to revive’,example:‘Avivó el fuego con más leña.’},
+{spanish:‘insólito/a’,english:‘unusual, strange’,example:‘Fue un evento insólito.’},
+{spanish:‘pudiente’,english:‘wealthy, well-off’,example:‘Una familia pudiente de la ciudad.’},
+{spanish:‘intrépido/a’,english:‘intrepid, fearless’,example:‘Un explorador intrépido.’},
+{spanish:‘desolado/a’,english:‘desolate’,example:‘Un paisaje desolado.’},
+{spanish:‘azaroso/a’,english:‘risky, eventful’,example:‘Una vida azarosa y llena de aventuras.’},
+{spanish:‘atribulado/a’,english:‘distressed, troubled’,example:‘Se veía atribulado por las noticias.’},
+{spanish:‘la cordura’,english:‘sanity, good sense’,example:‘Perdió la cordura después del accidente.’},
+{spanish:‘la osadía’,english:‘audacity, boldness’,example:‘Tuvo la osadía de enfrentarlo.’},
+{spanish:‘el recelo’,english:‘suspicion, mistrust’,example:‘Lo miraba con recelo.’},
+{spanish:‘la zozobra’,english:‘anxiety, anguish’,example:‘Vivía en constante zozobra.’},
+{spanish:‘dar cuenta de’,english:‘to realize, to account for’,example:‘Me di cuenta de mi error demasiado tarde.’},
+{spanish:‘hacer caso omiso’,english:‘to ignore, to disregard’,example:‘Hizo caso omiso de las advertencias.’},
+{spanish:‘salir a flote’,english:‘to stay afloat, to get by’,example:‘Logró salir a flote después de la crisis.’},
+{spanish:‘perder los estribos’,english:‘to lose one's temper’,example:‘Perdió los estribos y gritó.’},
+{spanish:‘quedar en nada’,english:‘to come to nothing’,example:‘El proyecto quedó en nada.’},
+{spanish:‘la porfía’,english:‘stubbornness, persistence’,example:‘Su porfía lo ayudó a lograrlo.’},
+{spanish:‘menesteroso/a’,english:‘needy’,example:‘Ayudaba a los menesterosos del pueblo.’},
+{spanish:‘descargar’,english:‘to download’,example:‘Voy a descargar la aplicación.’},
+{spanish:‘subir (un archivo)’,english:‘to upload’,example:‘Subí las fotos a la nube.’},
+{spanish:‘la contraseña’,english:‘password’,example:‘Olvidé mi contraseña.’},
+{spanish:‘el archivo adjunto’,english:‘attachment’,example:‘Envié el documento como archivo adjunto.’},
+{spanish:‘el enlace’,english:‘link’,example:‘Haz clic en el enlace.’},
+{spanish:‘la pantalla’,english:‘screen’,example:‘La pantalla se congeló.’},
+{spanish:‘guardar’,english:‘to save’,example:‘No olvides guardar los cambios.’},
+{spanish:‘actualizar’,english:‘to update’,example:‘Necesito actualizar el sistema.’},
+{spanish:‘la aplicación (app)’,english:‘application, app’,example:‘Descargué una app nueva.’},
+{spanish:‘el buscador’,english:‘search engine’,example:‘Lo busqué en el buscador.’},
+{spanish:‘el usuario’,english:‘user’,example:‘Crea un nombre de usuario.’},
+{spanish:‘la red social’,english:‘social network’,example:‘No uso redes sociales.’},
+{spanish:‘compartir’,english:‘to share’,example:‘Compartí el artículo en mis redes.’},
+{spanish:‘el atasco / el taco’,english:‘traffic jam’,example:‘Hay un atasco tremendo.’},
+{spanish:‘el carril’,english:‘lane’,example:‘Cambia al carril derecho.’},
+{spanish:‘el semáforo’,english:‘traffic light’,example:‘Para en el semáforo.’},
+{spanish:‘la acera / la vereda’,english:‘sidewalk’,example:‘Caminaba por la acera.’},
+{spanish:‘el transeúnte’,english:‘passerby’,example:‘Un transeúnte le preguntó la hora.’},
+{spanish:‘la cola / la fila’,english:‘line, queue’,example:‘Hay mucha cola en el banco.’},
+{spanish:‘el letrero’,english:‘sign’,example:‘Lee el letrero antes de entrar.’},
+{spanish:‘el timbre’,english:‘doorbell’,example:‘Toca el timbre.’},
+{spanish:‘la basura’,english:‘garbage, trash’,example:‘Saca la basura, por favor.’},
+{spanish:‘el contenedor’,english:‘container, bin’,example:‘Tira eso en el contenedor.’},
+{spanish:‘el plazo’,english:‘deadline’,example:‘El plazo es mañana.’},
+{spanish:‘la jornada’,english:‘workday, shift’,example:‘Trabajo media jornada.’},
+{spanish:‘el horario’,english:‘schedule’,example:‘Mi horario es flexible.’},
+{spanish:‘el sueldo’,english:‘salary’,example:‘Recibo mi sueldo a fin de mes.’},
+{spanish:‘el aumento’,english:‘raise’,example:‘Me dieron un aumento.’},
+{spanish:‘el despido’,english:‘dismissal, firing’,example:‘Teme el despido.’},
+{spanish:‘la baja’,english:‘leave (medical)’,example:‘Está de baja por enfermedad.’},
+{spanish:‘el expediente’,english:‘file, record’,example:‘Revisa su expediente laboral.’},
+{spanish:‘la capacitación’,english:‘training’,example:‘Asistí a una capacitación.’},
+{spanish:‘el teletrabajo’,english:‘remote work’,example:‘Prefiero el teletrabajo.’},
+{spanish:‘la cita’,english:‘appointment’,example:‘Tengo cita con el médico.’},
+{spanish:‘el consultorio’,english:‘doctor's office’,example:‘El consultorio está cerrado.’},
+{spanish:‘la receta’,english:‘prescription’,example:‘Necesito una receta médica.’},
+{spanish:‘el medicamento’,english:‘medication’,example:‘Toma este medicamento cada 8 horas.’},
+{spanish:‘el jarabe’,english:‘syrup’,example:‘Jarabe para la tos.’},
+{spanish:‘la vacuna’,english:‘vaccine’,example:‘Me puse la vacuna.’},
+{spanish:‘el análisis’,english:‘test, analysis’,example:‘Me hicieron un análisis de sangre.’},
+{spanish:‘la radiografía’,english:‘X-ray’,example:‘La radiografía salió bien.’},
+{spanish:‘el seguro’,english:‘insurance’,example:’¿Tienes seguro médico?’},
+{spanish:‘el cajero automático’,english:‘ATM’,example:‘Retira dinero del cajero.’},
+{spanish:‘la cuenta’,english:‘bill, account’,example:‘Pide la cuenta, por favor.’},
+{spanish:‘la tarjeta’,english:‘card’,example:‘Pago con tarjeta.’},
+{spanish:‘el recibo’,english:‘receipt’,example:‘Guarda el recibo.’},
+{spanish:‘el descuento’,english:‘discount’,example:‘Hay un 20% de descuento.’},
+{spanish:‘la oferta’,english:‘sale, offer’,example:‘Está en oferta esta semana.’},
+{spanish:‘el precio’,english:‘price’,example:’¿Cuál es el precio?’},
+{spanish:‘la garantía’,english:‘warranty’,example:‘Tiene un año de garantía.’},
+{spanish:‘el préstamo’,english:‘loan’,example:‘Pedí un préstamo al banco.’},
+{spanish:‘ahorrar’,english:‘to save (money)’,example:‘Estoy ahorrando para un viaje.’},
+{spanish:‘estar al tanto’,english:‘to be aware, informed’,example:‘Estoy al tanto de la situación.’},
+{spanish:‘tener en cuenta’,english:‘to take into account’,example:‘Ten en cuenta mi consejo.’},
+{spanish:‘ponerse de acuerdo’,english:‘to agree, reach agreement’,example:‘No nos pudimos poner de acuerdo.’},
+{spanish:‘echar de menos’,english:‘to miss (someone/something)’,example:‘Echo de menos mi país.’},
+{spanish:‘darse cuenta’,english:‘to realize’,example:‘Me di cuenta tarde.’},
+{spanish:‘hacer falta’,english:‘to be necessary, to miss’,example:‘Me hace falta descansar.’},
+{spanish:‘valer la pena’,english:‘to be worth it’,example:‘Vale la pena intentarlo.’},
+{spanish:‘estar harto/a’,english:‘to be fed up’,example:‘Estoy harta de esperar.’},
+{spanish:‘estar dispuesto/a’,english:‘to be willing’,example:‘Estoy dispuesta a ayudar.’},
+{spanish:‘llevarse bien/mal’,english:‘to get along well/badly’,example:‘Me llevo bien con mis vecinos.’},
+{spanish:‘ponerse al día’,english:‘to catch up’,example:‘Necesito ponerme al día con el trabajo.’},
+{spanish:‘hacer caso’,english:‘to pay attention, to listen’,example:‘Hazme caso, por favor.’},
+{spanish:‘pasar por alto’,english:‘to overlook’,example:‘Pasé por alto ese detalle.’},
+{spanish:‘sacar provecho’,english:‘to take advantage of’,example:‘Saca provecho de esta oportunidad.’},
+{spanish:‘quedar bien/mal’,english:‘to make a good/bad impression’,example:‘Quiero quedar bien en la entrevista.’},
+{spanish:‘el titular’,english:‘headline’,example:‘Los titulares de hoy son alarmantes.’},
+{spanish:‘la noticia’,english:‘news (item)’,example:’¿Viste la noticia?’},
+{spanish:‘el reportaje’,english:‘report, feature’,example:‘Vi un reportaje interesante.’},
+{spanish:‘el estreno’,english:‘premiere, release’,example:‘Fui al estreno de la película.’}
 ];
-
-// (continuación flashcards - otras 50)
-flashcards.push(
-    {spanish:'el timbre',english:'doorbell',example:'Toca el timbre.'},
-    {spanish:'la basura',english:'garbage, trash',example:'Saca la basura, por favor.'},
-    {spanish:'el contenedor',english:'container, bin',example:'Tira eso en el contenedor.'},
-    {spanish:'el plazo',english:'deadline',example:'El plazo es mañana.'},
-    {spanish:'la jornada',english:'workday, shift',example:'Trabajo media jornada.'},
-    {spanish:'el horario',english:'schedule',example:'Mi horario es flexible.'},
-    {spanish:'el sueldo',english:'salary',example:'Recibo mi sueldo a fin de mes.'},
-    {spanish:'el aumento',english:'raise',example:'Me dieron un aumento.'},
-    {spanish:'el despido',english:'dismissal, firing',example:'Teme el despido.'},
-    {spanish:'la baja',english:'leave (medical)',example:'Está de baja por enfermedad.'},
-    {spanish:'el expediente',english:'file, record',example:'Revisa su expediente laboral.'},
-    {spanish:'la capacitación',english:'training',example:'Asistí a una capacitación.'},
-    {spanish:'el teletrabajo',english:'remote work',example:'Prefiero el teletrabajo.'},
-    {spanish:'la cita',english:'appointment',example:'Tengo cita con el médico.'},
-    {spanish:'el consultorio',english:'doctor\'s office',example:'El consultorio está cerrado.'},
-    {spanish:'la receta',english:'prescription',example:'Necesito una receta médica.'},
-    {spanish:'el medicamento',english:'medication',example:'Toma este medicamento cada 8 horas.'},
-    {spanish:'el jarabe',english:'syrup',example:'Jarabe para la tos.'},
-    {spanish:'la vacuna',english:'vaccine',example:'Me puse la vacuna.'},
-    {spanish:'el análisis',english:'test, analysis',example:'Me hicieron un análisis de sangre.'},
-    {spanish:'la radiografía',english:'X-ray',example:'La radiografía salió bien.'},
-    {spanish:'el seguro',english:'insurance',example:'¿Tienes seguro médico?'},
-    {spanish:'el cajero automático',english:'ATM',example:'Retira dinero del cajero.'},
-    {spanish:'la cuenta',english:'bill, account',example:'Pide la cuenta, por favor.'},
-    {spanish:'la tarjeta',english:'card',example:'Pago con tarjeta.'},
-    {spanish:'el recibo',english:'receipt',example:'Guarda el recibo.'},
-    {spanish:'el descuento',english:'discount',example:'Hay un 20% de descuento.'},
-    {spanish:'la oferta',english:'sale, offer',example:'Está en oferta esta semana.'},
-    {spanish:'el precio',english:'price',example:'¿Cuál es el precio?'},
-    {spanish:'la garantía',english:'warranty',example:'Tiene un año de garantía.'},
-    {spanish:'el préstamo',english:'loan',example:'Pedí un préstamo al banco.'},
-    {spanish:'ahorrar',english:'to save (money)',example:'Estoy ahorrando para un viaje.'},
-    {spanish:'estar al tanto',english:'to be aware, informed',example:'Estoy al tanto de la situación.'},
-    {spanish:'tener en cuenta',english:'to take into account',example:'Ten en cuenta mi consejo.'},
-    {spanish:'ponerse de acuerdo',english:'to agree, reach agreement',example:'No nos pudimos poner de acuerdo.'},
-    {spanish:'echar de menos',english:'to miss (someone/something)',example:'Echo de menos mi país.'},
-    {spanish:'darse cuenta',english:'to realize',example:'Me di cuenta tarde.'},
-    {spanish:'hacer falta',english:'to be necessary, to miss',example:'Me hace falta descansar.'},
-    {spanish:'valer la pena',english:'to be worth it',example:'Vale la pena intentarlo.'},
-    {spanish:'estar harto/a',english:'to be fed up',example:'Estoy harta de esperar.'},
-    {spanish:'estar dispuesto/a',english:'to be willing',example:'Estoy dispuesta a ayudar.'},
-    {spanish:'llevarse bien/mal',english:'to get along well/badly',example:'Me llevo bien con mis vecinos.'},
-    {spanish:'ponerse al día',english:'to catch up',example:'Necesito ponerme al día con el trabajo.'},
-    {spanish:'hacer caso',english:'to pay attention, to listen',example:'Hazme caso, por favor.'},
-    {spanish:'pasar por alto',english:'to overlook',example:'Pasé por alto ese detalle.'},
-    {spanish:'sacar provecho',english:'to take advantage of',example:'Saca provecho de esta oportunidad.'},
-    {spanish:'quedar bien/mal',english:'to make a good/bad impression',example:'Quiero quedar bien en la entrevista.'},
-    {spanish:'el titular',english:'headline',example:'Los titulares de hoy son alarmantes.'},
-    {spanish:'la noticia',english:'news (item)',example:'¿Viste la noticia?'},
-    {spanish:'el reportaje',english:'report, feature',example:'Vi un reportaje interesante.'},
-    {spanish:'el estreno',english:'premiere, release',example:'Fui al estreno de la película.'}
-);
 
 // Estado del juego
 let currentVerb=null,currentSentence=null,currentFlashcard=0,currentPreposition=null,currentObject=null,currentOrden=null,currentSerEstar=null,selectedOption=null,selectedWords=[];
@@ -661,325 +757,330 @@ let scores={conjugaciones:{correct:0,attempts:0},frases:{correct:0,attempts:0},p
 
 // FUNCIONES - Navegación
 function showSection(section){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById(section).classList.add('active');
-    event.target.classList.add('active');
-    if(section==='conjugaciones')loadNewVerb();
-    if(section==='frases')loadNewSentence();
-    if(section==='flashcards')loadFlashcard();
-    if(section==='preposiciones')loadNewPreposition();
-    if(section==='objetos')loadNewObject();
-    if(section==='orden')loadNewOrden();
-    if(section==='ser-estar')loadNewSerEstar();
+document.querySelectorAll(’.section’).forEach(s=>s.classList.remove(‘active’));
+document.querySelectorAll(’.nav-btn’).forEach(b=>b.classList.remove(‘active’));
+document.getElementById(section).classList.add(‘active’);
+event.target.classList.add(‘active’);
+if(section===‘conjugaciones’)loadNewVerb();
+if(section===‘frases’)loadNewSentence();
+if(section===‘flashcards’)loadFlashcard();
+if(section===‘preposiciones’)loadNewPreposition();
+if(section===‘objetos’)loadNewObject();
+if(section===‘orden’)loadNewOrden();
+if(section===‘ser-estar’)loadNewSerEstar();
 }
 
 function updateScore(section){
-    const score=scores[section];
-    let elementId;
-    if(section==='conjugaciones')elementId='conj-score';
-    else if(section==='frases')elementId='sentence-score';
-    else if(section==='preposiciones')elementId='prep-score';
-    else if(section==='objetos')elementId='object-score';
-    else if(section==='orden')elementId='orden-score';
-    else if(section==='serEstar')elementId='ser-estar-score';
-    document.getElementById(elementId).textContent=`Correctas: ${score.correct} | Intentos: ${score.attempts}`;
+const score=scores[section];
+let elementId;
+if(section===‘conjugaciones’)elementId=‘conj-score’;
+else if(section===‘frases’)elementId=‘sentence-score’;
+else if(section===‘preposiciones’)elementId=‘prep-score’;
+else if(section===‘objetos’)elementId=‘object-score’;
+else if(section===‘orden’)elementId=‘orden-score’;
+else if(section===‘serEstar’)elementId=‘ser-estar-score’;
+document.getElementById(elementId).textContent=`Correctas: ${score.correct} | Intentos: ${score.attempts}`;
 }
 
 // FUNCIONES - Conjugaciones
 function loadNewVerb(){
-    currentVerb=irregularVerbs[Math.floor(Math.random()*irregularVerbs.length)];
-    document.getElementById('conj-question').textContent=`¿Cómo se conjuga "${currentVerb.infinitive}" en ${currentVerb.tense}?`;
-    document.getElementById('verb-info').textContent=`Persona: ${currentVerb.person}`;
-    document.getElementById('conj-answer').value='';
-    document.getElementById('conj-feedback').innerHTML='';
+currentVerb=irregularVerbs[Math.floor(Math.random()*irregularVerbs.length)];
+document.getElementById(‘conj-question’).textContent=`¿Cómo se conjuga "${currentVerb.infinitive}" en ${currentVerb.tense}?`;
+document.getElementById(‘verb-info’).textContent=`Persona: ${currentVerb.person}`;
+document.getElementById(‘conj-answer’).value=’’;
+document.getElementById(‘conj-feedback’).innerHTML=’’;
 }
 
 function checkConjugation(){
-    const answer=document.getElementById('conj-answer').value.trim().toLowerCase();
-    const feedback=document.getElementById('conj-feedback');
-    scores.conjugaciones.attempts++;
-    if(answer===currentVerb.answer.toLowerCase()){
-        scores.conjugaciones.correct++;
-        feedback.className='feedback correct';
-        feedback.textContent='¡Correcto! 🎉';
-        setTimeout(()=>{loadNewVerb();},1500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentVerb.answer}</strong>`;
-    }
-    updateScore('conjugaciones');
+const answer=document.getElementById(‘conj-answer’).value.trim().toLowerCase();
+const feedback=document.getElementById(‘conj-feedback’);
+scores.conjugaciones.attempts++;
+if(answer===currentVerb.answer.toLowerCase()){
+scores.conjugaciones.correct++;
+feedback.className=‘feedback correct’;
+feedback.textContent=’¡Correcto! 🎉’;
+setTimeout(()=>{loadNewVerb();},1500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentVerb.answer}</strong>`;
+}
+updateScore(‘conjugaciones’);
 }
 
 // FUNCIONES - Ser vs Estar
 function toggleSerEstarGuide(){
-    const guide=document.getElementById('ser-estar-guide');
-    guide.style.display=guide.style.display==='none'?'block':'none';
+const guide=document.getElementById(‘ser-estar-guide’);
+guide.style.display=guide.style.display===‘none’?‘block’:‘none’;
 }
 
 function loadNewSerEstar(){
-    currentSerEstar=serEstarExercises[Math.floor(Math.random()*serEstarExercises.length)];
-    document.getElementById('ser-estar-sentence').textContent=currentSerEstar.text;
-    const optionsDiv=document.getElementById('ser-estar-options');
-    optionsDiv.innerHTML='';
-    selectedOption=null;
-    currentSerEstar.options.forEach((option,index)=>{
-        const btn=document.createElement('button');
-        btn.className='option-btn';
-        btn.textContent=option;
-        btn.onclick=()=>selectSerEstarOption(index);
-        optionsDiv.appendChild(btn);
-    });
-    document.getElementById('ser-estar-feedback').innerHTML='';
+currentSerEstar=serEstarExercises[Math.floor(Math.random()*serEstarExercises.length)];
+document.getElementById(‘ser-estar-sentence’).textContent=currentSerEstar.text;
+const optionsDiv=document.getElementById(‘ser-estar-options’);
+optionsDiv.innerHTML=’’;
+selectedOption=null;
+currentSerEstar.options.forEach((option,index)=>{
+const btn=document.createElement(‘button’);
+btn.className=‘option-btn’;
+btn.textContent=option;
+btn.onclick=()=>selectSerEstarOption(index);
+optionsDiv.appendChild(btn);
+});
+document.getElementById(‘ser-estar-feedback’).innerHTML=’’;
 }
 
 function selectSerEstarOption(index){
-    selectedOption=index;
-    document.querySelectorAll('#ser-estar-options .option-btn').forEach((btn,i)=>{
-        btn.classList.toggle('selected',i===index);
-    });
+selectedOption=index;
+document.querySelectorAll(’#ser-estar-options .option-btn’).forEach((btn,i)=>{
+btn.classList.toggle(‘selected’,i===index);
+});
 }
 
 function checkSerEstar(){
-    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
-    const feedback=document.getElementById('ser-estar-feedback');
-    scores.serEstar.attempts++;
-    if(selectedOption===currentSerEstar.correct){
-        scores.serEstar.correct++;
-        feedback.className='feedback correct';
-        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
-        setTimeout(()=>{loadNewSerEstar();},2500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSerEstar.options[currentSerEstar.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
-    }
-    updateScore('serEstar');
+if(selectedOption===null){alert(‘Por favor selecciona una opción’);return;}
+const feedback=document.getElementById(‘ser-estar-feedback’);
+scores.serEstar.attempts++;
+if(selectedOption===currentSerEstar.correct){
+scores.serEstar.correct++;
+feedback.className=‘feedback correct’;
+feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
+setTimeout(()=>{loadNewSerEstar();},2500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSerEstar.options[currentSerEstar.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSerEstar.explanation}</span>`;
+}
+updateScore(‘serEstar’);
 }
 
 // FUNCIONES - Completar Frases
 function toggleFrasesGuide(){
-    const guide=document.getElementById('frases-guide');
-    guide.style.display=guide.style.display==='none'?'block':'none';
+const guide=document.getElementById(‘frases-guide’);
+guide.style.display=guide.style.display===‘none’?‘block’:‘none’;
 }
 
 function loadNewSentence(){
-    currentSentence=sentences[Math.floor(Math.random()*sentences.length)];
-    document.getElementById('sentence').textContent=currentSentence.text;
-    const optionsDiv=document.getElementById('options');
-    optionsDiv.innerHTML='';
-    selectedOption=null;
-    currentSentence.options.forEach((option,index)=>{
-        const btn=document.createElement('button');
-        btn.className='option-btn';
-        btn.textContent=option;
-        btn.onclick=()=>selectOption(index);
-        optionsDiv.appendChild(btn);
-    });
-    document.getElementById('sentence-feedback').innerHTML='';
+currentSentence=sentences[Math.floor(Math.random()*sentences.length)];
+document.getElementById(‘sentence’).textContent=currentSentence.text;
+const optionsDiv=document.getElementById(‘options’);
+optionsDiv.innerHTML=’’;
+selectedOption=null;
+currentSentence.options.forEach((option,index)=>{
+const btn=document.createElement(‘button’);
+btn.className=‘option-btn’;
+btn.textContent=option;
+btn.onclick=()=>selectOption(index);
+optionsDiv.appendChild(btn);
+});
+document.getElementById(‘sentence-feedback’).innerHTML=’’;
 }
 
 function selectOption(index){
-    selectedOption=index;
-    document.querySelectorAll('#options .option-btn').forEach((btn,i)=>{
-        btn.classList.toggle('selected',i===index);
-    });
+selectedOption=index;
+document.querySelectorAll(’#options .option-btn’).forEach((btn,i)=>{
+btn.classList.toggle(‘selected’,i===index);
+});
 }
 
 function checkSentence(){
-    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
-    const feedback=document.getElementById('sentence-feedback');
-    scores.frases.attempts++;
-    if(selectedOption===currentSentence.correct){
-        scores.frases.correct++;
-        feedback.className='feedback correct';
-        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
-        setTimeout(()=>{loadNewSentence();},2500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSentence.options[currentSentence.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
-    }
-    updateScore('frases');
+if(selectedOption===null){alert(‘Por favor selecciona una opción’);return;}
+const feedback=document.getElementById(‘sentence-feedback’);
+scores.frases.attempts++;
+if(selectedOption===currentSentence.correct){
+scores.frases.correct++;
+feedback.className=‘feedback correct’;
+feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
+setTimeout(()=>{loadNewSentence();},2500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentSentence.options[currentSentence.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentSentence.explanation}</span>`;
+}
+updateScore(‘frases’);
 }
 
 // FUNCIONES - Preposiciones
 function togglePrepositionGuide(){
-    const guide=document.getElementById('prep-guide');
-    guide.style.display=guide.style.display==='none'?'block':'none';
+const guide=document.getElementById(‘prep-guide’);
+guide.style.display=guide.style.display===‘none’?‘block’:‘none’;
 }
 
 function loadNewPreposition(){
-    currentPreposition=prepositionExercises[Math.floor(Math.random()*prepositionExercises.length)];
-    document.getElementById('prep-sentence').textContent=currentPreposition.sentence;
-    const optionsDiv=document.getElementById('prep-options');
-    optionsDiv.innerHTML='';
-    selectedOption=null;
-    currentPreposition.options.forEach((option,index)=>{
-        const btn=document.createElement('button');
-        btn.className='option-btn';
-        btn.textContent=option;
-        btn.onclick=()=>selectPrepOption(index);
-        optionsDiv.appendChild(btn);
-    });
-    document.getElementById('prep-feedback').innerHTML='';
+currentPreposition=prepositionExercises[Math.floor(Math.random()*prepositionExercises.length)];
+document.getElementById(‘prep-sentence’).textContent=currentPreposition.sentence;
+const optionsDiv=document.getElementById(‘prep-options’);
+optionsDiv.innerHTML=’’;
+selectedOption=null;
+currentPreposition.options.forEach((option,index)=>{
+const btn=document.createElement(‘button’);
+btn.className=‘option-btn’;
+btn.textContent=option;
+btn.onclick=()=>selectPrepOption(index);
+optionsDiv.appendChild(btn);
+});
+document.getElementById(‘prep-feedback’).innerHTML=’’;
 }
 
 function selectPrepOption(index){
-    selectedOption=index;
-    document.querySelectorAll('#prep-options .option-btn').forEach((btn,i)=>{
-        btn.classList.toggle('selected',i===index);
-    });
+selectedOption=index;
+document.querySelectorAll(’#prep-options .option-btn’).forEach((btn,i)=>{
+btn.classList.toggle(‘selected’,i===index);
+});
 }
 
 function checkPreposition(){
-    if(selectedOption===null){alert('Por favor selecciona una opción');return;}
-    const feedback=document.getElementById('prep-feedback');
-    scores.preposiciones.attempts++;
-    if(selectedOption===currentPreposition.correct){
-        scores.preposiciones.correct++;
-        feedback.className='feedback correct';
-        feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
-        setTimeout(()=>{loadNewPreposition();},2500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentPreposition.options[currentPreposition.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
-    }
-    updateScore('preposiciones');
+if(selectedOption===null){alert(‘Por favor selecciona una opción’);return;}
+const feedback=document.getElementById(‘prep-feedback’);
+scores.preposiciones.attempts++;
+if(selectedOption===currentPreposition.correct){
+scores.preposiciones.correct++;
+feedback.className=‘feedback correct’;
+feedback.innerHTML=`¡Correcto! 🎉<br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
+setTimeout(()=>{loadNewPreposition();},2500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentPreposition.options[currentPreposition.correct]}</strong><br><span style="font-weight: normal; font-size: 0.9em;">${currentPreposition.explanation}</span>`;
+}
+updateScore(‘preposiciones’);
 }
 
 // FUNCIONES - Objeto Directo/Indirecto
-    function toggleObjectGuide(){
-    const guide=document.getElementById('object-guide');
-    guide.style.display=guide.style.display==='none'?'block':'none';
+function toggleObjectGuide(){
+const guide=document.getElementById(‘object-guide’);
+guide.style.display=guide.style.display===‘none’?‘block’:‘none’;
 }
 
 function loadNewObject(){
-    currentObject=objectExercises[Math.floor(Math.random()*objectExercises.length)];
-    document.getElementById('object-question').textContent=`Transforma la oración: "${currentObject.original}"`;
-    document.getElementById('object-hint').textContent=`Pista: ${currentObject.hint}`;
-    document.getElementById('object-answer').value='';
-    document.getElementById('object-feedback').innerHTML='';
+currentObject=objectExercises[Math.floor(Math.random()*objectExercises.length)];
+document.getElementById(‘object-question’).textContent=`Transforma la oración: "${currentObject.original}"`;
+document.getElementById(‘object-hint’).textContent=`Pista: ${currentObject.hint}`;
+document.getElementById(‘object-answer’).value=’’;
+document.getElementById(‘object-feedback’).innerHTML=’’;
 }
 
 function checkObject(){
-    const answer=document.getElementById('object-answer').value.trim().toLowerCase();
-    const feedback=document.getElementById('object-feedback');
-    scores.objetos.attempts++;
-    if(answer===currentObject.answer.toLowerCase()){
-        scores.objetos.correct++;
-        feedback.className='feedback correct';
-        feedback.textContent='¡Correcto! 🎉';
-        setTimeout(()=>{loadNewObject();},1500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentObject.answer}</strong>`;
-    }
-    updateScore('objetos');
+const answer=document.getElementById(‘object-answer’).value.trim().toLowerCase();
+const feedback=document.getElementById(‘object-feedback’);
+scores.objetos.attempts++;
+if(answer===currentObject.answer.toLowerCase()){
+scores.objetos.correct++;
+feedback.className=‘feedback correct’;
+feedback.textContent=’¡Correcto! 🎉’;
+setTimeout(()=>{loadNewObject();},1500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. La respuesta correcta es: <strong>${currentObject.answer}</strong>`;
+}
+updateScore(‘objetos’);
 }
 
 // FUNCIONES - Orden de Palabras
 function loadNewOrden(){
-    currentOrden=ordenExercises[Math.floor(Math.random()*ordenExercises.length)];
-    selectedWords=[];
-    const wordBank=document.getElementById('word-bank');
-    wordBank.innerHTML='';
-    const shuffled=[...currentOrden.words].sort(()=>Math.random()-0.5);
-    shuffled.forEach((word,index)=>{
-        const wordBtn=document.createElement('button');
-        wordBtn.className='option-btn';
-        wordBtn.textContent=word;
-        wordBtn.onclick=()=>addWord(word,index);
-        wordBtn.dataset.index=index;
-        wordBank.appendChild(wordBtn);
-    });
-    document.getElementById('sentence-builder').innerHTML='';
-    document.getElementById('orden-feedback').innerHTML='';
+currentOrden=ordenExercises[Math.floor(Math.random()*ordenExercises.length)];
+selectedWords=[];
+const wordBank=document.getElementById(‘word-bank’);
+wordBank.innerHTML=’’;
+const shuffled=[…currentOrden.words].sort(()=>Math.random()-0.5);
+shuffled.forEach((word,index)=>{
+const wordBtn=document.createElement(‘button’);
+wordBtn.className=‘option-btn’;
+wordBtn.textContent=word;
+wordBtn.onclick=()=>addWord(word,index);
+wordBtn.dataset.index=index;
+wordBank.appendChild(wordBtn);
+});
+document.getElementById(‘sentence-builder’).innerHTML=’’;
+document.getElementById(‘orden-feedback’).innerHTML=’’;
 }
 
 function addWord(word,index){
-    selectedWords.push({word,originalIndex:index});
-    const wordBank=document.getElementById('word-bank');
-    const buttons=wordBank.querySelectorAll('.option-btn');
-    buttons[index].style.display='none';
-    const builder=document.getElementById('sentence-builder');
-    const wordSpan=document.createElement('span');
-    wordSpan.className='option-btn selected';
-    wordSpan.textContent=word;
-    wordSpan.style.cursor='pointer';
-    wordSpan.onclick=()=>removeWord(selectedWords.length-1);
-    builder.appendChild(wordSpan);
+selectedWords.push({word,originalIndex:index});
+const wordBank=document.getElementById(‘word-bank’);
+const buttons=wordBank.querySelectorAll(’.option-btn’);
+buttons[index].style.display=‘none’;
+const builder=document.getElementById(‘sentence-builder’);
+const wordSpan=document.createElement(‘span’);
+wordSpan.className=‘option-btn selected’;
+wordSpan.textContent=word;
+wordSpan.style.cursor=‘pointer’;
+wordSpan.onclick=()=>removeWord(selectedWords.length-1);
+builder.appendChild(wordSpan);
 }
 
 function removeWord(position){
-    const removed=selectedWords.splice(position);
-    removed.forEach(item=>{
-        const wordBank=document.getElementById('word-bank');
-        const buttons=wordBank.querySelectorAll('.option-btn');
-        buttons[item.originalIndex].style.display='inline-block';
-    });
-    const builder=document.getElementById('sentence-builder');
-    const spans=builder.querySelectorAll('span');
-    for(let i=position;i<spans.length;i++){
-        spans[i].remove();
-    }
+const removed=selectedWords.splice(position);
+removed.forEach(item=>{
+const wordBank=document.getElementById(‘word-bank’);
+const buttons=wordBank.querySelectorAll(’.option-btn’);
+buttons[item.originalIndex].style.display=‘inline-block’;
+});
+const builder=document.getElementById(‘sentence-builder’);
+const spans=builder.querySelectorAll(‘span’);
+for(let i=position;i<spans.length;i++){
+spans[i].remove();
+}
 }
 
 function resetOrden(){
-    loadNewOrden();
+loadNewOrden();
 }
 
 function checkOrden(){
-    if(selectedWords.length===0){alert('Por favor ordena las palabras');return;}
-    const userAnswer=selectedWords.map(w=>w.word).join(' ').toLowerCase();
-    const feedback=document.getElementById('orden-feedback');
-    scores.orden.attempts++;
-    const isCorrect=userAnswer===currentOrden.correct.toLowerCase()||currentOrden.variations.some(v=>userAnswer===v.toLowerCase());
-    if(isCorrect){
-        scores.orden.correct++;
-        feedback.className='feedback correct';
-        feedback.textContent='¡Correcto! 🎉';
-        setTimeout(()=>{loadNewOrden();},1500);
-    }else{
-        feedback.className='feedback incorrect';
-        feedback.innerHTML=`Incorrecto. Una respuesta correcta es: <strong>${currentOrden.correct}</strong>`;
-    }
-    updateScore('orden');
+if(selectedWords.length===0){alert(‘Por favor ordena las palabras’);return;}
+const userAnswer=selectedWords.map(w=>w.word).join(’ ‘).toLowerCase();
+const feedback=document.getElementById(‘orden-feedback’);
+scores.orden.attempts++;
+const isCorrect=userAnswer===currentOrden.correct.toLowerCase()||currentOrden.variations.some(v=>userAnswer===v.toLowerCase());
+if(isCorrect){
+scores.orden.correct++;
+feedback.className=‘feedback correct’;
+feedback.textContent=’¡Correcto! 🎉’;
+setTimeout(()=>{loadNewOrden();},1500);
+}else{
+feedback.className=‘feedback incorrect’;
+feedback.innerHTML=`Incorrecto. Una respuesta correcta es: <strong>${currentOrden.correct}</strong>`;
+}
+updateScore(‘orden’);
 }
 
 // FUNCIONES - Flashcards
 function loadFlashcard(){
-    const card=flashcards[currentFlashcard];
-    const frontText=card.spanish;
-    const backText=card.example?`${card.english}\n\nEjemplo:\n${card.example}`:card.english;
-    document.getElementById('card-front').textContent=frontText;
-    document.getElementById('card-back').textContent=backText;
-    document.getElementById('flashcard').classList.remove('flipped');
-    updateFlashcardProgress();
+const card=flashcards[currentFlashcard];
+const frontText=card.spanish;
+const backText=card.example?`${card.english}\n\nEjemplo:\n${card.example}`:card.english;
+document.getElementById(‘card-front’).textContent=frontText;
+document.getElementById(‘card-back’).textContent=backText;
+document.getElementById(‘flashcard’).classList.remove(‘flipped’);
+updateFlashcardProgress();
 }
 
 function flipCard(){
-    document.getElementById('flashcard').classList.toggle('flipped');
+document.getElementById(‘flashcard’).classList.toggle(‘flipped’);
 }
 
 function nextFlashcard(){
-    currentFlashcard=(currentFlashcard+1)%flashcards.length;
-    loadFlashcard();
+currentFlashcard=(currentFlashcard+1)%flashcards.length;
+loadFlashcard();
 }
 
 function updateFlashcardProgress(){
-    document.getElementById('flashcard-progress').textContent=`Tarjeta ${currentFlashcard+1} de ${flashcards.length}`;
+document.getElementById(‘flashcard-progress’).textContent=`Tarjeta ${currentFlashcard+1} de ${flashcards.length}`;
 }
 
 // Inicializar
 loadNewVerb();
 
+// Initialize accent keyboards
+initAccentKeyboard(‘conj-answer’, ‘conj-keyboard’);
+initAccentKeyboard(‘object-answer’, ‘object-keyboard’);
+
 // Event listeners para Enter
-document.getElementById('conj-answer').addEventListener('keypress',function(e){
-    if(e.key==='Enter')checkConjugation();
+document.getElementById(‘conj-answer’).addEventListener(‘keypress’,function(e){
+if(e.key===‘Enter’)checkConjugation();
 });
 
-document.getElementById('object-answer').addEventListener('keypress',function(e){
-    if(e.key==='Enter')checkObject();
+document.getElementById(‘object-answer’).addEventListener(‘keypress’,function(e){
+if(e.key===‘Enter’)checkObject();
 });
-    </script>
+</script>
+
 </body>
 </html>
