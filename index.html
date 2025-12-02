@@ -93,19 +93,63 @@
             color: #666;
         }
 
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
         input[type="text"] {
             width: 100%;
             padding: 15px;
             font-size: 1.1em;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
-            margin-bottom: 15px;
             transition: border-color 0.3s;
         }
 
         input[type="text"]:focus {
             outline: none;
             border-color: #667eea;
+        }
+
+        /* Accent Keyboard Styles */
+        .accent-keyboard {
+            display: none;
+            background: #f8f9ff;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .accent-keyboard.visible {
+            display: flex;
+        }
+
+        .accent-btn {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 40px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .accent-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .accent-btn:active {
+            transform: translateY(0);
         }
 
         .options {
@@ -245,14 +289,15 @@
             border-radius: 8px;
             border-left: 4px solid #667eea;
         }
-/* Low-energy flip: no 3D, just swap faces */
-.flashcard { transform: none !important; }              /* kill rotation */
-.flashcard-content { backface-visibility: visible; 
-                     transform: none !important; }
 
-.flashcard-back { display: none; }                      /* show front by default */
-.flashcard.flipped .flashcard-front { display: none; }  /* hide front when flipped */
-.flashcard.flipped .flashcard-back { display: flex; }   /* show back when flipped */
+        /* Low-energy flip: no 3D, just swap faces */
+        .flashcard { transform: none !important; }
+        .flashcard-content { backface-visibility: visible; 
+                             transform: none !important; }
+
+        .flashcard-back { display: none; }
+        .flashcard.flipped .flashcard-front { display: none; }
+        .flashcard.flipped .flashcard-back { display: flex; }
 
         @media (max-width: 480px) {
             .header h1 {
@@ -261,6 +306,12 @@
             
             .card {
                 padding: 20px;
+            }
+
+            .accent-btn {
+                padding: 6px 10px;
+                font-size: 1em;
+                min-width: 35px;
             }
         }
     </style>
@@ -287,7 +338,10 @@
                 <h2 style="margin-bottom: 20px; color: #667eea;">Practica Conjugaciones</h2>
                 <div class="question" id="conj-question"></div>
                 <div class="verb-info" id="verb-info"></div>
-                <input type="text" id="conj-answer" placeholder="Escribe la conjugación...">
+                <div class="input-wrapper">
+                    <input type="text" id="conj-answer" placeholder="Escribe la conjugación...">
+                    <div class="accent-keyboard" id="conj-keyboard"></div>
+                </div>
                 <button class="btn-primary" onclick="checkConjugation()">Verificar</button>
                 <div id="conj-feedback"></div>
                 <div class="score" id="conj-score">Correctas: 0 | Intentos: 0</div>
@@ -351,7 +405,10 @@
                     <p style="margin-top:10px;"><strong>Ambos:</strong> Di el libro a María → Se lo di</p>
                 </div>
                 <div class="question" id="object-question"></div>
-                <input type="text" id="object-answer" placeholder="Escribe la oración transformada...">
+                <div class="input-wrapper">
+                    <input type="text" id="object-answer" placeholder="Escribe la oración transformada...">
+                    <div class="accent-keyboard" id="object-keyboard"></div>
+                </div>
                 <div class="hint" id="object-hint"></div>
                 <button class="btn-primary" onclick="checkObject()">Verificar</button>
                 <div id="object-feedback"></div>
@@ -470,6 +527,7 @@ const serEstarExercises = [
     {text:'___ nerviosa por el examen.',options:['Soy','Estoy'],correct:1,explanation:'ESTAR: estado emocional temporal.'},
     {text:'Mi padre ___ policía.',options:['es','está'],correct:0,explanation:'SER: profesión.'}
 ];
+
 // DATOS - Completar Frases
 const sentences = [
     {text:'Cuando mi abuela ___ niña, siempre ___ al parque.',options:['era/iba','fui/fui','era/fui','fui/iba'],correct:0,explanation:'Imperfecto para acciones habituales.'},
@@ -658,6 +716,87 @@ flashcards.push(
 // Estado del juego
 let currentVerb=null,currentSentence=null,currentFlashcard=0,currentPreposition=null,currentObject=null,currentOrden=null,currentSerEstar=null,selectedOption=null,selectedWords=[];
 let scores={conjugaciones:{correct:0,attempts:0},frases:{correct:0,attempts:0},preposiciones:{correct:0,attempts:0},objetos:{correct:0,attempts:0},orden:{correct:0,attempts:0},serEstar:{correct:0,attempts:0}};
+let currentInput=null; // Track which input is active for keyboard
+
+// ACCENT KEYBOARD FUNCTIONALITY
+const accentChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü', '¿', '¡'];
+
+function createAccentKeyboard(keyboardId) {
+    const keyboard = document.getElementById(keyboardId);
+    keyboard.innerHTML = '';
+    
+    accentChars.forEach(char => {
+        const btn = document.createElement('button');
+        btn.className = 'accent-btn';
+        btn.textContent = char;
+        btn.type = 'button'; // Prevent form submission
+        btn.onclick = function(e) {
+            e.preventDefault();
+            insertAccent(char, keyboardId);
+        };
+        keyboard.appendChild(btn);
+    });
+}
+
+function insertAccent(char, keyboardId) {
+    const inputId = keyboardId.replace('-keyboard', '-answer');
+    const input = document.getElementById(inputId);
+    
+    if (input) {
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+        const text = input.value;
+        
+        // Insert character at cursor position
+        input.value = text.substring(0, start) + char + text.substring(end);
+        
+        // Move cursor after inserted character
+        input.selectionStart = input.selectionEnd = start + 1;
+        input.focus();
+    }
+}
+
+function showKeyboard(keyboardId) {
+    const keyboard = document.getElementById(keyboardId);
+    keyboard.classList.add('visible');
+}
+
+function hideKeyboard(keyboardId) {
+    const keyboard = document.getElementById(keyboardId);
+    keyboard.classList.remove('visible');
+}
+
+// Set up keyboard for both inputs
+function setupAccentKeyboards() {
+    // Setup for conjugation input
+    const conjInput = document.getElementById('conj-answer');
+    const conjKeyboard = 'conj-keyboard';
+    createAccentKeyboard(conjKeyboard);
+    
+    conjInput.addEventListener('focus', () => showKeyboard(conjKeyboard));
+    conjInput.addEventListener('blur', (e) => {
+        // Delay hiding to allow button clicks
+        setTimeout(() => {
+            if (document.activeElement !== conjInput) {
+                hideKeyboard(conjKeyboard);
+            }
+        }, 200);
+    });
+    
+    // Setup for object input
+    const objectInput = document.getElementById('object-answer');
+    const objectKeyboard = 'object-keyboard';
+    createAccentKeyboard(objectKeyboard);
+    
+    objectInput.addEventListener('focus', () => showKeyboard(objectKeyboard));
+    objectInput.addEventListener('blur', (e) => {
+        setTimeout(() => {
+            if (document.activeElement !== objectInput) {
+                hideKeyboard(objectKeyboard);
+            }
+        }, 200);
+    });
+}
 
 // FUNCIONES - Navegación
 function showSection(section){
@@ -847,7 +986,7 @@ function checkPreposition(){
 }
 
 // FUNCIONES - Objeto Directo/Indirecto
-    function toggleObjectGuide(){
+function toggleObjectGuide(){
     const guide=document.getElementById('object-guide');
     guide.style.display=guide.style.display==='none'?'block':'none';
 }
@@ -969,16 +1108,19 @@ function updateFlashcardProgress(){
     document.getElementById('flashcard-progress').textContent=`Tarjeta ${currentFlashcard+1} de ${flashcards.length}`;
 }
 
-// Inicializar
-loadNewVerb();
+// Initialize everything when page loads
+window.addEventListener('DOMContentLoaded', function() {
+    loadNewVerb();
+    setupAccentKeyboards();
+    
+    // Event listeners for Enter key
+    document.getElementById('conj-answer').addEventListener('keypress',function(e){
+        if(e.key==='Enter')checkConjugation();
+    });
 
-// Event listeners para Enter
-document.getElementById('conj-answer').addEventListener('keypress',function(e){
-    if(e.key==='Enter')checkConjugation();
-});
-
-document.getElementById('object-answer').addEventListener('keypress',function(e){
-    if(e.key==='Enter')checkObject();
+    document.getElementById('object-answer').addEventListener('keypress',function(e){
+        if(e.key==='Enter')checkObject();
+    });
 });
     </script>
 </body>
