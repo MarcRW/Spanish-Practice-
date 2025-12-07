@@ -94,13 +94,12 @@ This app runs entirely in the browser. No data is sent to any server. All studen
 - **Accent keyboard** - custom implementation for Spanish characters
 - **Self-contained** - single file, no external dependencies
 
-## 📝 Copyright
+## 📝 Copyright & Usage
 
-© 2024 Marc. All rights reserved. 
-This app is for private educational use only.
+© 2024 Marc. All rights reserved.
 
+This application and its contents are proprietary. Unauthorized copying, distribution, or commercial use is prohibited.
 
 
 ---
 
-**Questions?** The code is well-commented - check the `<script>` section for implementation details.
