@@ -576,10 +576,17 @@
                 </div>
                 
                 <div class="auto-save-indicator" id="auto-save-status"></div>
+                <div class="auto-save-indicator" id="current-writing-status" style="color: #667eea; font-weight: 600;"></div>
                 
                 <div class="writing-controls">
                     <button class="btn-primary" onclick="saveWriting()">💾 Guardar como Nuevo</button>
-                    <button class="btn-primary btn-secondary" onclick="clearWritingArea()">🗑️ Limpiar Texto</button>
+                    <button class="btn-primary btn-secondary" onclick="clearWritingArea()">📝 Limpiar Texto</button>
+                </div>
+
+                <div class="writing-controls" style="margin-top: 10px;">
+                    <button class="btn-primary" onclick="copyToClipboard()" style="background: #28a745;">📋 Copiar Texto</button>
+                    <button class="btn-primary" onclick="downloadWriting()" style="background: #17a2b8;">💾 Descargar .txt</button>
+                    <button class="btn-primary" onclick="deleteCurrentWriting()" style="background: #dc3545;">🗑️ Eliminar Actual</button>
                 </div>
 
                 <div class="saved-writings" id="saved-writings-list">
@@ -1022,6 +1029,7 @@ function saveWriting() {
     currentWritingId = null;
     document.getElementById('writing-text').value = '';
     updateAutoSaveStatus('Guardado como nuevo trabajo');
+    updateCurrentWritingStatus('');
     displayWritings();
     
     setTimeout(() => {
@@ -1034,7 +1042,83 @@ function clearWritingArea() {
         document.getElementById('writing-text').value = '';
         currentWritingId = null;
         updateAutoSaveStatus('');
+        updateCurrentWritingStatus('');
     }
+}
+
+function copyToClipboard() {
+    const text = document.getElementById('writing-text').value;
+    
+    if (!text.trim()) {
+        alert('No hay texto para copiar.');
+        return;
+    }
+    
+    navigator.clipboard.writeText(text).then(() => {
+        updateAutoSaveStatus('✓ Copiado al portapapeles');
+        setTimeout(() => updateAutoSaveStatus(''), 2000);
+    }).catch(err => {
+        // Fallback for older browsers
+        const textarea = document.getElementById('writing-text');
+        textarea.select();
+        document.execCommand('copy');
+        updateAutoSaveStatus('✓ Copiado al portapapeles');
+        setTimeout(() => updateAutoSaveStatus(''), 2000);
+    });
+}
+
+function downloadWriting() {
+    const text = document.getElementById('writing-text').value;
+    
+    if (!text.trim()) {
+        alert('No hay texto para descargar.');
+        return;
+    }
+    
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    
+    // Create filename with date
+    const now = new Date();
+    const dateStr = now.toISOString().split('T')[0];
+    a.download = `escritura_${dateStr}.txt`;
+    
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    updateAutoSaveStatus('✓ Archivo descargado');
+    setTimeout(() => updateAutoSaveStatus(''), 2000);
+}
+
+function deleteCurrentWriting() {
+    if (!currentWritingId) {
+        alert('No hay ningún trabajo cargado para eliminar.');
+        return;
+    }
+    
+    if (!confirm('¿Estás segura de que quieres eliminar este trabajo guardado?')) {
+        return;
+    }
+    
+    let writings = getWritings();
+    writings = writings.filter(w => w.id !== currentWritingId);
+    localStorage.setItem('spanishWritings', JSON.stringify(writings));
+    
+    currentWritingId = null;
+    document.getElementById('writing-text').value = '';
+    updateAutoSaveStatus('Trabajo eliminado');
+    updateCurrentWritingStatus('');
+    displayWritings();
+    
+    setTimeout(() => updateAutoSaveStatus(''), 2000);
+}
+
+function updateCurrentWritingStatus(message) {
+    document.getElementById('current-writing-status').textContent = message;
 }
 
 function getWritings() {
@@ -1085,7 +1169,17 @@ function loadWriting(id) {
     if (writing) {
         document.getElementById('writing-text').value = writing.text;
         currentWritingId = id;
+        
+        const date = new Date(writing.created);
+        const dateStr = date.toLocaleDateString('es-ES', {
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
         updateAutoSaveStatus('Trabajo cargado');
+        updateCurrentWritingStatus(`Editando trabajo de ${dateStr}`);
         
         // Scroll to top of writing area
         document.getElementById('writing-text').scrollIntoView({ behavior: 'smooth', block: 'start' });
