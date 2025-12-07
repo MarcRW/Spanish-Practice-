@@ -112,6 +112,115 @@
             border-color: #667eea;
         }
 
+        /* Writing Practice Styles */
+        .writing-area {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            font-size: 1.05em;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3s;
+            line-height: 1.6;
+        }
+
+        .writing-area:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .writing-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .writing-controls button {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .saved-writings {
+            margin-top: 30px;
+        }
+
+        .saved-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .saved-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .saved-item-title {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .saved-item-date {
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .saved-item-preview {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .saved-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9em;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-load {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-load:hover {
+            background: #5568d3;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        .auto-save-indicator {
+            font-size: 0.85em;
+            color: #888;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
         /* Accent Keyboard Styles */
         .accent-keyboard {
             display: none;
@@ -196,6 +305,14 @@
 
         .btn-primary:hover {
             background: #5568d3;
+        }
+
+        .btn-secondary {
+            background: #764ba2;
+        }
+
+        .btn-secondary:hover {
+            background: #653a8a;
         }
 
         .feedback {
@@ -313,6 +430,14 @@
                 font-size: 1em;
                 min-width: 35px;
             }
+
+            .writing-controls {
+                flex-direction: column;
+            }
+
+            .writing-controls button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -331,6 +456,7 @@
             <button class="nav-btn" onclick="showSection('objetos')">Obj. Directo/Indirecto</button>
             <button class="nav-btn" onclick="showSection('orden')">Orden de Palabras</button>
             <button class="nav-btn" onclick="showSection('flashcards')">Flashcards</button>
+            <button class="nav-btn" onclick="showSection('escritura')">✍️ Escritura</button>
         </div>
 
         <div class="card">
@@ -349,7 +475,7 @@
 
             <div id="ser-estar" class="section">
                 <h2 style="margin-bottom: 20px; color: #667eea;">Ser vs Estar</h2>
-                <button class="btn-primary" onclick="toggleSerEstarGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <button class="btn-primary btn-secondary" onclick="toggleSerEstarGuide()" style="margin-bottom: 20px;">📖 Ver Guía</button>
                 <div id="ser-estar-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
                     <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
                     <p><strong>SER:</strong> características permanentes, identidad, profesión, origen, hora/fecha</p>
@@ -365,7 +491,7 @@
 
             <div id="frases" class="section">
                 <h2 style="margin-bottom: 20px; color: #667eea;">Completar Frases</h2>
-                <button class="btn-primary" onclick="toggleFrasesGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <button class="btn-primary btn-secondary" onclick="toggleFrasesGuide()" style="margin-bottom: 20px;">📖 Ver Guía</button>
                 <div id="frases-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
                     <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
                     <p><strong>"A" Personal:</strong> antes de persona específica: "Veo a María"</p>
@@ -381,7 +507,7 @@
 
             <div id="preposiciones" class="section">
                 <h2 style="margin-bottom: 20px; color: #667eea;">Preposiciones</h2>
-                <button class="btn-primary" onclick="togglePrepositionGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <button class="btn-primary btn-secondary" onclick="togglePrepositionGuide()" style="margin-bottom: 20px;">📖 Ver Guía</button>
                 <div id="prep-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
                     <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
                     <p><strong>POR:</strong> causa, medio, periodo</p>
@@ -397,7 +523,7 @@
 
             <div id="objetos" class="section">
                 <h2 style="margin-bottom: 20px; color: #667eea;">Objeto Directo/Indirecto</h2>
-                <button class="btn-primary" onclick="toggleObjectGuide()" style="margin-bottom: 20px; background: #764ba2;">📖 Ver Guía</button>
+                <button class="btn-primary btn-secondary" onclick="toggleObjectGuide()" style="margin-bottom: 20px;">📖 Ver Guía</button>
                 <div id="object-guide" style="display: none; background: #f8f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #667eea;">
                     <h3 style="color: #667eea; margin-bottom: 15px;">Recuerda:</h3>
                     <p><strong>Directo (lo/la):</strong> Di el libro → Lo di</p>
@@ -435,6 +561,31 @@
                 </div>
                 <button class="btn-primary" onclick="nextFlashcard()">Siguiente Tarjeta</button>
                 <div class="score" id="flashcard-progress"></div>
+            </div>
+
+            <div id="escritura" class="section">
+                <h2 style="margin-bottom: 20px; color: #667eea;">✍️ Práctica de Escritura</h2>
+                <p style="margin-bottom: 15px; color: #666;">Escribe ensayos, historias o cualquier texto en español. Tus trabajos se guardan automáticamente.</p>
+                
+                <div class="input-wrapper">
+                    <textarea 
+                        class="writing-area" 
+                        id="writing-text" 
+                        placeholder="Empieza a escribir aquí..."></textarea>
+                    <div class="accent-keyboard" id="writing-keyboard"></div>
+                </div>
+                
+                <div class="auto-save-indicator" id="auto-save-status"></div>
+                
+                <div class="writing-controls">
+                    <button class="btn-primary" onclick="saveWriting()">💾 Guardar como Nuevo</button>
+                    <button class="btn-primary btn-secondary" onclick="clearWritingArea()">🗑️ Limpiar Texto</button>
+                </div>
+
+                <div class="saved-writings" id="saved-writings-list">
+                    <h3 style="color: #667eea; margin-bottom: 15px; margin-top: 30px;">Trabajos Guardados</h3>
+                    <div id="writings-container"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -716,7 +867,9 @@ flashcards.push(
 // Estado del juego
 let currentVerb=null,currentSentence=null,currentFlashcard=0,currentPreposition=null,currentObject=null,currentOrden=null,currentSerEstar=null,selectedOption=null,selectedWords=[];
 let scores={conjugaciones:{correct:0,attempts:0},frases:{correct:0,attempts:0},preposiciones:{correct:0,attempts:0},objetos:{correct:0,attempts:0},orden:{correct:0,attempts:0},serEstar:{correct:0,attempts:0}};
-let currentInput=null; // Track which input is active for keyboard
+let currentInput=null;
+let autoSaveTimeout = null;
+let currentWritingId = null;
 
 // ACCENT KEYBOARD FUNCTIONALITY
 const accentChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü', '¿', '¡'];
@@ -729,7 +882,7 @@ function createAccentKeyboard(keyboardId) {
         const btn = document.createElement('button');
         btn.className = 'accent-btn';
         btn.textContent = char;
-        btn.type = 'button'; // Prevent form submission
+        btn.type = 'button';
         btn.onclick = function(e) {
             e.preventDefault();
             insertAccent(char, keyboardId);
@@ -739,7 +892,10 @@ function createAccentKeyboard(keyboardId) {
 }
 
 function insertAccent(char, keyboardId) {
-    const inputId = keyboardId.replace('-keyboard', '-answer');
+    let inputId = keyboardId.replace('-keyboard', '-answer');
+    if (keyboardId === 'writing-keyboard') {
+        inputId = 'writing-text';
+    }
     const input = document.getElementById(inputId);
     
     if (input) {
@@ -747,12 +903,14 @@ function insertAccent(char, keyboardId) {
         const end = input.selectionEnd;
         const text = input.value;
         
-        // Insert character at cursor position
         input.value = text.substring(0, start) + char + text.substring(end);
-        
-        // Move cursor after inserted character
         input.selectionStart = input.selectionEnd = start + 1;
         input.focus();
+        
+        // Trigger auto-save for writing section
+        if (keyboardId === 'writing-keyboard') {
+            scheduleAutoSave();
+        }
     }
 }
 
@@ -766,7 +924,7 @@ function hideKeyboard(keyboardId) {
     keyboard.classList.remove('visible');
 }
 
-// Set up keyboard for both inputs
+// Set up keyboard for all inputs
 function setupAccentKeyboards() {
     // Setup for conjugation input
     const conjInput = document.getElementById('conj-answer');
@@ -775,7 +933,6 @@ function setupAccentKeyboards() {
     
     conjInput.addEventListener('focus', () => showKeyboard(conjKeyboard));
     conjInput.addEventListener('blur', (e) => {
-        // Delay hiding to allow button clicks
         setTimeout(() => {
             if (document.activeElement !== conjInput) {
                 hideKeyboard(conjKeyboard);
@@ -796,6 +953,168 @@ function setupAccentKeyboards() {
             }
         }, 200);
     });
+
+    // Setup for writing textarea
+    const writingInput = document.getElementById('writing-text');
+    const writingKeyboard = 'writing-keyboard';
+    createAccentKeyboard(writingKeyboard);
+    
+    writingInput.addEventListener('focus', () => showKeyboard(writingKeyboard));
+    writingInput.addEventListener('blur', (e) => {
+        setTimeout(() => {
+            if (document.activeElement !== writingInput) {
+                hideKeyboard(writingKeyboard);
+            }
+        }, 200);
+    });
+
+    // Auto-save on typing
+    writingInput.addEventListener('input', scheduleAutoSave);
+}
+
+// WRITING PRACTICE FUNCTIONALITY
+function scheduleAutoSave() {
+    if (autoSaveTimeout) {
+        clearTimeout(autoSaveTimeout);
+    }
+    
+    autoSaveTimeout = setTimeout(() => {
+        autoSaveWriting();
+    }, 2000); // Auto-save 2 seconds after user stops typing
+}
+
+function autoSaveWriting() {
+    const text = document.getElementById('writing-text').value.trim();
+    if (!text) return;
+    
+    if (currentWritingId) {
+        // Update existing writing
+        const writings = getWritings();
+        const index = writings.findIndex(w => w.id === currentWritingId);
+        if (index !== -1) {
+            writings[index].text = text;
+            writings[index].lastModified = new Date().toISOString();
+            localStorage.setItem('spanishWritings', JSON.stringify(writings));
+            updateAutoSaveStatus('Guardado automáticamente');
+        }
+    }
+}
+
+function saveWriting() {
+    const text = document.getElementById('writing-text').value.trim();
+    
+    if (!text) {
+        alert('Por favor escribe algo antes de guardar.');
+        return;
+    }
+    
+    const writings = getWritings();
+    const newWriting = {
+        id: Date.now(),
+        text: text,
+        created: new Date().toISOString(),
+        lastModified: new Date().toISOString()
+    };
+    
+    writings.unshift(newWriting);
+    localStorage.setItem('spanishWritings', JSON.stringify(writings));
+    
+    currentWritingId = null;
+    document.getElementById('writing-text').value = '';
+    updateAutoSaveStatus('Guardado como nuevo trabajo');
+    displayWritings();
+    
+    setTimeout(() => {
+        updateAutoSaveStatus('');
+    }, 3000);
+}
+
+function clearWritingArea() {
+    if (confirm('¿Estás segura de que quieres limpiar el texto?')) {
+        document.getElementById('writing-text').value = '';
+        currentWritingId = null;
+        updateAutoSaveStatus('');
+    }
+}
+
+function getWritings() {
+    const stored = localStorage.getItem('spanishWritings');
+    return stored ? JSON.parse(stored) : [];
+}
+
+function displayWritings() {
+    const writings = getWritings();
+    const container = document.getElementById('writings-container');
+    
+    if (writings.length === 0) {
+        container.innerHTML = '<p style="color: #888; font-style: italic;">No hay trabajos guardados todavía.</p>';
+        return;
+    }
+    
+    container.innerHTML = writings.map(writing => {
+        const date = new Date(writing.created);
+        const dateStr = date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        const preview = writing.text.substring(0, 100) + (writing.text.length > 100 ? '...' : '');
+        
+        return `
+            <div class="saved-item">
+                <div class="saved-item-header">
+                    <span class="saved-item-date">${dateStr}</span>
+                </div>
+                <div class="saved-item-preview">${preview}</div>
+                <div class="saved-item-actions">
+                    <button class="btn-small btn-load" onclick="loadWriting(${writing.id})">Cargar</button>
+                    <button class="btn-small btn-delete" onclick="deleteWriting(${writing.id})">Eliminar</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function loadWriting(id) {
+    const writings = getWritings();
+    const writing = writings.find(w => w.id === id);
+    
+    if (writing) {
+        document.getElementById('writing-text').value = writing.text;
+        currentWritingId = id;
+        updateAutoSaveStatus('Trabajo cargado');
+        
+        // Scroll to top of writing area
+        document.getElementById('writing-text').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        setTimeout(() => {
+            updateAutoSaveStatus('');
+        }, 2000);
+    }
+}
+
+function deleteWriting(id) {
+    if (!confirm('¿Estás segura de que quieres eliminar este trabajo?')) {
+        return;
+    }
+    
+    let writings = getWritings();
+    writings = writings.filter(w => w.id !== id);
+    localStorage.setItem('spanishWritings', JSON.stringify(writings));
+    
+    if (currentWritingId === id) {
+        currentWritingId = null;
+        document.getElementById('writing-text').value = '';
+    }
+    
+    displayWritings();
+}
+
+function updateAutoSaveStatus(message) {
+    document.getElementById('auto-save-status').textContent = message;
 }
 
 // FUNCIONES - Navegación
@@ -811,6 +1130,7 @@ function showSection(section){
     if(section==='objetos')loadNewObject();
     if(section==='orden')loadNewOrden();
     if(section==='ser-estar')loadNewSerEstar();
+    if(section==='escritura')displayWritings();
 }
 
 function updateScore(section){
@@ -1112,6 +1432,7 @@ function updateFlashcardProgress(){
 window.addEventListener('DOMContentLoaded', function() {
     loadNewVerb();
     setupAccentKeyboards();
+    displayWritings();
     
     // Event listeners for Enter key
     document.getElementById('conj-answer').addEventListener('keypress',function(e){
